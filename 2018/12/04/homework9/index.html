@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.1.2">
+
+
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="5.13 Calculate the value of $\pi$ by using numerical integration to estimate the area of a circle of unit radius. Observe how your estimate approaches the exact value (3.1415926…) as the grid size in">
+<meta name="keywords" content="计算物理,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算物理第九次作业">
+<meta property="og:url" content="https://editing.world/2018/12/04/homework9/index.html">
+<meta property="og:site_name" content="Editing&#39;s Dream">
+<meta property="og:description" content="5.13 Calculate the value of $\pi$ by using numerical integration to estimate the area of a circle of unit radius. Observe how your estimate approaches the exact value (3.1415926…) as the grid size in">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://editing.world/2018/12/04/homework9/homework9-1.png">
+<meta property="og:image" content="https://editing.world/2018/12/04/homework9/homework9-2.png">
+<meta property="og:image" content="https://editing.world/2018/12/04/homework9/homework9-3.png">
+<meta property="og:image" content="https://editing.world/2018/12/04/homework9/homework9-4.png">
+<meta property="og:updated_time" content="2019-06-04T03:15:55.684Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算物理第九次作业">
+<meta name="twitter:description" content="5.13 Calculate the value of $\pi$ by using numerical integration to estimate the area of a circle of unit radius. Observe how your estimate approaches the exact value (3.1415926…) as the grid size in">
+<meta name="twitter:image" content="https://editing.world/2018/12/04/homework9/homework9-1.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://editing.world/2018/12/04/homework9/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>计算物理第九次作业 | Editing's Dream</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Editing's Dream</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://editing.world/2018/12/04/homework9/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Editing">
+      <meta itemprop="description" content="Freedom is Not Free">
+      <meta itemprop="image" content="/images/avatar.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Editing's Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算物理第九次作业
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-04 21:18:25" itemprop="dateCreated datePublished" datetime="2018-12-04T21:18:25+08:00">2018-12-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-04 11:15:55" itemprop="dateModified" datetime="2019-06-04T11:15:55+08:00">2019-06-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/计算物理/" itemprop="url" rel="index"><span itemprop="name">计算物理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="5-13"><a href="#5-13" class="headerlink" title="5.13"></a>5.13</h2><blockquote>
+<p>Calculate the value of $\pi$ by using numerical integration to estimate the area of a circle of unit radius. Observe how your estimate approaches the exact value (3.1415926…) as the grid size in the integration is reduced.</p>
+</blockquote>
+<a id="more"></a>
+<p>这里计算圆周率使用最简单的办法，即对一个半圆方程进行积分</p>
+<p>$$\int^{1}_{-1}\sqrt{1-x^2}dx=\frac{\pi}{2}$$</p>
+<p>使用数值计算的方法，把积分区间划为足够小的格子，然后累加即可，下面是课本上给出的最粗糙的数值积分方法</p>
+<p>$$\int f(x)dx\approx\sum_i f(x_i)\Delta x_i$$</p>
+<p>最后乘以2就得到了圆周率。下面画出误差随划分网格的个数的变化关系</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> curve_fit</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> pl</span><br><span class="line"></span><br><span class="line">steps = np.arange(<span class="number">100000</span>, <span class="number">10000000</span>, <span class="number">100000</span>)</span><br><span class="line">ans = np.array([])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> steps:</span><br><span class="line">    x = np.linspace(<span class="number">-1</span>, <span class="number">1</span>, i)</span><br><span class="line">    dx = <span class="number">2</span> / i</span><br><span class="line">    y = (<span class="number">1</span> - x * x) ** <span class="number">0.5</span></span><br><span class="line">    s = dx * np.sum(y) * <span class="number">2</span></span><br><span class="line">    ans = np.append(ans, (np.pi - s))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x, a, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a * np.power(x, b)</span><br><span class="line">popt, pcov = curve_fit(func, steps, ans)</span><br><span class="line">fit = func(steps, popt[<span class="number">0</span>],popt[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">pl.figure(figsize = (<span class="number">10</span>, <span class="number">10</span>), dpi = <span class="number">80</span>)</span><br><span class="line">pl.plot(steps, ans, <span class="string">'o'</span>, markersize = <span class="number">3</span>, label = <span class="string">'Error'</span>)</span><br><span class="line">pl.plot(steps, test, label = <span class="string">'Fit'</span>)</span><br><span class="line">pl.legend(loc = <span class="string">'upper right'</span>)</span><br><span class="line">pl.xlabel(<span class="string">'Number of grids'</span>)</span><br><span class="line">pl.ylabel(<span class="string">'Error'</span>)</span><br><span class="line">pl.title(<span class="string">'The error versus number of grids'</span>)</span><br><span class="line">pl.text(<span class="number">1e6</span>, <span class="number">1e-5</span>, <span class="string">'$\Delta=%.2f N^&#123;%.2f&#125;$'</span>% (popt[<span class="number">0</span>], popt[<span class="number">1</span>]), size = <span class="number">20</span>)</span><br><span class="line">pl.xscale(<span class="string">'log'</span>)</span><br><span class="line">pl.yscale(<span class="string">'log'</span>)</span><br><span class="line">pl.show()</span><br></pre></td></tr></table></figure>
+<img src="/2018/12/04/homework9/homework9-1.png">
+<p>在双对数坐标下关系曲线为直线，说明误差与网格个数的关系是幂函数关系，拟合后发现是刚好成反比，实际应用上一般使用梯形近似或者辛普森近似等方法，会使精度在同等条件显著提高。</p>
+<h2 id="5-14"><a href="#5-14" class="headerlink" title="5.14"></a>5.14</h2><blockquote>
+<p>Write a program to calculate the magnetic field for your favorite current distribution. One possibility is a pair of loops of radius $r$, with one loop lying in the $x-y$ plane and the other in the $y-z$ plane. Another possibility is the solenoid considered in Figure 5.17. （自由发挥电流分布，形状越奇怪越好^_^)</p>
+</blockquote>
+<p>利用毕奥-萨伐尔定律</p>
+<p>$$\mathbf B(\mathbf r)=\frac{\mu _{0}I}{4\pi }\int _{\mathbb{L}’}\mathrm d \boldsymbol \ell ‘\times \frac{\mathbf r -\mathbf{r}’}{|\mathbf r-\mathbf r’|^3}$$</p>
+<p>首先将电流分布离散化，分别计算出 $I\Delta {\mathbf{L}}$ 和 $\Delta {\mathbf{r}}$，然后将空间各点的坐标带入进行运算，即可得到各点的磁场分布。下面模拟的是位于两个平面的环形线圈产生的磁场。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> pl</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> mpl_toolkits.mplot3d.axes3d <span class="keyword">as</span> ax3d</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">magnetic</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, current=<span class="number">1</span>, discretization_length=<span class="number">0.01</span>)</span>:</span></span><br><span class="line">        self.current = current</span><br><span class="line">        self.discretization_length = discretization_length</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wire</span><span class="params">(self)</span>:</span></span><br><span class="line">        radius = <span class="number">1</span></span><br><span class="line">        t = np.linspace(<span class="number">0</span>, <span class="number">2</span> * np.pi, <span class="number">40</span>)</span><br><span class="line">        self.cir_1 = np.array([radius * np.sin(t) + <span class="number">1</span>, radius * np.cos(t), np.zeros(len(t))]).T</span><br><span class="line">        self.cir_2 = np.array([np.zeros(len(t)), radius * np.sin(t), radius * np.cos(t) + <span class="number">1</span>]).T</span><br><span class="line"></span><br><span class="line">        npts = len(self.cir_1)</span><br><span class="line">        self.IdL = np.array([-self.cir_1[c+<span class="number">1</span>]+self.cir_1[c] <span class="keyword">for</span> c <span class="keyword">in</span> range(npts<span class="number">-1</span>)]) * self.current</span><br><span class="line">        self.r1 = np.array([(self.cir_1[c+<span class="number">1</span>]+self.cir_1[c])*<span class="number">0.5</span> <span class="keyword">for</span> c <span class="keyword">in</span> range(npts<span class="number">-1</span>)])</span><br><span class="line">        self.IdL = np.vstack((self.IdL, np.array([self.cir_2[c+<span class="number">1</span>]-self.cir_2[c] <span class="keyword">for</span> c <span class="keyword">in</span> range(npts<span class="number">-1</span>)]) * self.current))</span><br><span class="line">        self.r1 = np.vstack((self.r1, np.array([(self.cir_2[c+<span class="number">1</span>]+self.cir_2[c])*<span class="number">0.5</span> <span class="keyword">for</span> c <span class="keyword">in</span> range(npts<span class="number">-1</span>)])))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">calculate</span><span class="params">(self)</span>:</span></span><br><span class="line">        B = []</span><br><span class="line">        x = np.linspace(<span class="number">-2</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line">        y = np.linspace(<span class="number">-2</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line">        z = np.linspace(<span class="number">-2</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line">        grid = np.meshgrid(x, y, z)</span><br><span class="line">        points = np.vstack(map(np.ravel, grid)).T</span><br><span class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> points:</span><br><span class="line">            r2 = r - self.r1</span><br><span class="line">            r25 = np.linalg.norm(r2, axis=<span class="number">1</span>)**<span class="number">3</span></span><br><span class="line">            r3 = r2 / r25[:, np.newaxis]</span><br><span class="line">            cr = np.cross(self.IdL, r3)</span><br><span class="line">            s = np.sum(cr, axis=<span class="number">0</span>) * <span class="number">1e-7</span></span><br><span class="line">            B.append(s)</span><br><span class="line">        self.B = np.array(B)</span><br><span class="line">        </span><br><span class="line">        fig = pl.figure(figsize = (<span class="number">10</span>, <span class="number">10</span>), dpi = <span class="number">80</span>)</span><br><span class="line">        ax = fig.gca(projection=<span class="string">'3d'</span>)</span><br><span class="line">        ax.quiver(points[:,<span class="number">0</span>],points[:,<span class="number">1</span>], points[:,<span class="number">2</span>],self.B[:, <span class="number">0</span>],self.B[:, <span class="number">1</span>],self.B[:,<span class="number">2</span>],color=<span class="string">'b'</span>,length=<span class="number">0.3</span>,normalize=<span class="keyword">True</span>)</span><br><span class="line">        ax.plot(self.cir_1[:, <span class="number">0</span>],self.cir_1[:, <span class="number">1</span>], self.cir_1[:, <span class="number">2</span>], <span class="string">'r'</span>, linewidth = <span class="number">2</span>)</span><br><span class="line">        ax.plot(self.cir_2[:, <span class="number">0</span>],self.cir_2[:, <span class="number">1</span>], self.cir_2[:, <span class="number">2</span>], <span class="string">'r'</span>, linewidth = <span class="number">2</span>)</span><br><span class="line">        ax.set_xlabel(<span class="string">'x'</span>)</span><br><span class="line">        ax.set_ylabel(<span class="string">'y'</span>)</span><br><span class="line">        ax.set_zlabel(<span class="string">'z'</span>)</span><br><span class="line">        pl.show()</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = magnetic()</span><br><span class="line">    a.wire()</span><br><span class="line">    a.calculate()</span><br></pre></td></tr></table></figure>
+<img src="/2018/12/04/homework9/homework9-2.png">
+<p>可以发现使用数值模拟可以很容易的计算出解析方法难以算出的磁场分布。下面使用常见的亥姆霍兹线圈进行模拟。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">magnetic2</span><span class="params">(magnetic)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wire</span><span class="params">(self)</span>:</span></span><br><span class="line">        radius = <span class="number">1.5</span></span><br><span class="line">        t = np.linspace(<span class="number">0</span>, <span class="number">2</span> * np.pi, <span class="number">40</span>)</span><br><span class="line">        self.cir_1 = np.array([radius * np.sin(t), radius * np.cos(t), np.zeros(len(t)) - <span class="number">1</span>]).T</span><br><span class="line">        self.cir_2 = np.array([radius * np.sin(t), radius * np.cos(t), np.zeros(len(t)) + <span class="number">1</span>]).T</span><br><span class="line"></span><br><span class="line">        npts = len(self.cir_1)</span><br><span class="line">        self.IdL = np.array([-self.cir_1[c+<span class="number">1</span>]+self.cir_1[c] <span class="keyword">for</span> c <span class="keyword">in</span> range(npts<span class="number">-1</span>)]) * self.current</span><br><span class="line">        self.r1 = np.array([(self.cir_1[c+<span class="number">1</span>]+self.cir_1[c])*<span class="number">0.5</span> <span class="keyword">for</span> c <span class="keyword">in</span> range(npts<span class="number">-1</span>)])</span><br><span class="line">        self.IdL = np.vstack((self.IdL, np.array([-self.cir_2[c+<span class="number">1</span>]+self.cir_2[c] <span class="keyword">for</span> c <span class="keyword">in</span> range(npts<span class="number">-1</span>)]) * self.current))</span><br><span class="line">        self.r1 = np.vstack((self.r1, np.array([(self.cir_2[c+<span class="number">1</span>]+self.cir_2[c])*<span class="number">0.5</span> <span class="keyword">for</span> c <span class="keyword">in</span> range(npts<span class="number">-1</span>)])))</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = magnetic2()</span><br><span class="line">    a.wire()</span><br><span class="line">    a.calculate()</span><br></pre></td></tr></table></figure>
+<img src="/2018/12/04/homework9/homework9-3.png">
+<p>可以发现两个线圈之间确实是近似的匀强磁场，这和已知的理论相符。下面随便画一个电流分布</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">magnetic3</span><span class="params">(magnetic)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wire</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.a = np.array([[<span class="number">0.5</span>,<span class="number">0</span>,<span class="number">0.5</span>],[<span class="number">0.5</span>,<span class="number">0</span>,<span class="number">1</span>],[<span class="number">1.5</span>,<span class="number">0</span>,<span class="number">1</span>],[<span class="number">1.5</span>,<span class="number">0</span>,<span class="number">-0.5</span>],[<span class="number">0.5</span>,<span class="number">0</span>,<span class="number">-0.5</span>],[<span class="number">0.5</span>,<span class="number">0</span>,<span class="number">0.3</span>],[<span class="number">-0.5</span>,<span class="number">0</span>,<span class="number">0.3</span>],[<span class="number">-0.5</span>,<span class="number">0</span>,<span class="number">-0.5</span>],[<span class="number">-1.5</span>,<span class="number">0</span>,<span class="number">-0.5</span>],[<span class="number">-1.5</span>,<span class="number">0</span>,<span class="number">1</span>],[<span class="number">-0.5</span>,<span class="number">0</span>,<span class="number">1</span>],[<span class="number">-0.5</span>,<span class="number">0</span>,<span class="number">0.5</span>],[<span class="number">0.5</span>,<span class="number">0</span></span><br><span class="line">        ,<span class="number">0.5</span>]])</span><br><span class="line"></span><br><span class="line">        npts = len(self.a)</span><br><span class="line">        self.IdL = np.array([-self.a[c+<span class="number">1</span>]+self.a[c] <span class="keyword">for</span> c <span class="keyword">in</span> range(npts<span class="number">-1</span>)]) * self.current</span><br><span class="line">        self.r1 = np.array([(self.a[c+<span class="number">1</span>]+self.a[c])*<span class="number">0.5</span> <span class="keyword">for</span> c <span class="keyword">in</span> range(npts<span class="number">-1</span>)])</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">calculate</span><span class="params">(self)</span>:</span></span><br><span class="line">        B = []</span><br><span class="line">        x = np.linspace(<span class="number">-2</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line">        y = np.linspace(<span class="number">-2</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line">        z = np.linspace(<span class="number">-2</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line">        grid = np.meshgrid(x, y, z)</span><br><span class="line">        points = np.vstack(map(np.ravel, grid)).T</span><br><span class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> points:</span><br><span class="line">            r2 = r - self.r1</span><br><span class="line">            r25 = np.linalg.norm(r2, axis=<span class="number">1</span>)**<span class="number">3</span></span><br><span class="line">            r3 = r2 / r25[:, np.newaxis]</span><br><span class="line">            cr = np.cross(self.IdL, r3)</span><br><span class="line">            s = np.sum(cr, axis=<span class="number">0</span>) * <span class="number">1e-7</span></span><br><span class="line">            B.append(s)</span><br><span class="line">        self.B = np.array(B)</span><br><span class="line">        </span><br><span class="line">        fig = pl.figure(figsize = (<span class="number">10</span>, <span class="number">10</span>), dpi = <span class="number">80</span>)</span><br><span class="line">        ax = fig.gca(projection=<span class="string">'3d'</span>)</span><br><span class="line">        ax.quiver(points[:,<span class="number">0</span>],points[:,<span class="number">1</span>], points[:,<span class="number">2</span>],self.B[:, <span class="number">0</span>],self.B[:, <span class="number">1</span>],self.B[:,<span class="number">2</span>],color=<span class="string">'r'</span>,length=<span class="number">0.3</span>,normalize=<span class="keyword">True</span>)</span><br><span class="line">        ax.plot(self.a[:, <span class="number">0</span>],self.a[:, <span class="number">1</span>], self.a[:, <span class="number">2</span>], <span class="string">'black'</span>, linewidth = <span class="number">2</span>)</span><br><span class="line">        ax.set_xlabel(<span class="string">'x'</span>)</span><br><span class="line">        ax.set_ylabel(<span class="string">'y'</span>)</span><br><span class="line">        ax.set_zlabel(<span class="string">'z'</span>)</span><br><span class="line">        pl.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    a = magnetic3()</span><br><span class="line">    a.wire()</span><br><span class="line">    a.calculate()</span><br></pre></td></tr></table></figure>
+<img src="/2018/12/04/homework9/homework9-4.png">
+<p>I’m angry!</p>
+<h2 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h2><p>十分感谢 <a href="https://www.geophysik.uni-muenchen.de/~wack/teaching/Python/6_magwire.html" target="_blank" rel="noopener">这份教程</a>，第二题思路和部分代码参考该教程，并进行了十分大的简化，原教程基本可以完美解决本问题。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Editing</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://editing.world/2018/12/04/homework9/" title="计算物理第九次作业">https://editing.world/2018/12/04/homework9/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算物理/" rel="tag"># 计算物理</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/04/google-dragonfly/" rel="next" title="同样作为中国大陆人，我为什么坚决反对「蜻蜓」项目">
+                <i class="fa fa-chevron-left"></i> 同样作为中国大陆人，我为什么坚决反对「蜻蜓」项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/09/homework10/" rel="prev" title="计算物理第十次作业">
+                计算物理第十次作业 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
+            
+              <p class="site-author-name" itemprop="name">Editing</p>
+              <div class="site-description motion-element" itemprop="description">Freedom is Not Free</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://changeless.me" title="http://changeless.me" rel="noopener" target="_blank">千江有水</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.felixc.at" title="https://blog.felixc.at" rel="noopener" target="_blank">Felix's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xyenchi.github.io" title="https://xyenchi.github.io" rel="noopener" target="_blank">Oria's blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-13"><span class="nav-number">1.</span> <span class="nav-text">5.13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-14"><span class="nav-number">2.</span> <span class="nav-text">5.14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#致谢"><span class="nav-number">3.</span> <span class="nav-text">致谢</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Editing</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

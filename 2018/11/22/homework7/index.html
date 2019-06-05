@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.1.2">
+
+
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Problem 4.9 In this section we saw that orbits are unstable for any value of $\beta$ that is not precisely 2 in (4.12). A related question, which we did not address (until now), is how unstable an orb">
+<meta name="keywords" content="计算物理,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算物理第七次作业">
+<meta property="og:url" content="https://editing.world/2018/11/22/homework7/index.html">
+<meta property="og:site_name" content="Editing&#39;s Dream">
+<meta property="og:description" content="Problem 4.9 In this section we saw that orbits are unstable for any value of $\beta$ that is not precisely 2 in (4.12). A related question, which we did not address (until now), is how unstable an orb">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://editing.world/2018/11/22/homework7/test_2_0.png">
+<meta property="og:image" content="https://editing.world/2018/11/22/homework7/test_4_0.png">
+<meta property="og:image" content="https://editing.world/2018/11/22/homework7/test_4_1.png">
+<meta property="og:image" content="https://editing.world/2018/11/22/homework7/test_4_2.png">
+<meta property="og:image" content="https://editing.world/2018/11/22/homework7/test_4_3.png">
+<meta property="og:image" content="https://editing.world/2018/11/22/homework7/test_8_0.png">
+<meta property="og:updated_time" content="2019-06-04T03:15:55.668Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算物理第七次作业">
+<meta name="twitter:description" content="Problem 4.9 In this section we saw that orbits are unstable for any value of $\beta$ that is not precisely 2 in (4.12). A related question, which we did not address (until now), is how unstable an orb">
+<meta name="twitter:image" content="https://editing.world/2018/11/22/homework7/test_2_0.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://editing.world/2018/11/22/homework7/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>计算物理第七次作业 | Editing's Dream</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Editing's Dream</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://editing.world/2018/11/22/homework7/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Editing">
+      <meta itemprop="description" content="Freedom is Not Free">
+      <meta itemprop="image" content="/images/avatar.webp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Editing's Dream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算物理第七次作业
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-22 22:56:33" itemprop="dateCreated datePublished" datetime="2018-11-22T22:56:33+08:00">2018-11-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-04 11:15:55" itemprop="dateModified" datetime="2019-06-04T11:15:55+08:00">2019-06-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/计算物理/" itemprop="url" rel="index"><span itemprop="name">计算物理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Problem-4-9"><a href="#Problem-4-9" class="headerlink" title="Problem 4.9"></a>Problem 4.9</h1><blockquote>
+<p>In this section we saw that orbits are unstable for any value of $\beta$ that is not precisely 2 in (4.12). A related question, which we did not address (until now), is <em>how</em> unstable an orbit might be. That is, how long will it take for an unstable orbit to become obvious. The answer to this question depends on the nature of the orbit. If the initial velocity is chosen so as to make the orbit precisely circular, then the value of $\beta$ in (4.12) will make absolutely no difference. Of course, in practice it is impossible to construct an orbit that is exactly circular, so the instabilities when $\beta\neq2$ will always be apparent given enough time. Even so, orbits that start out as nearly circular will remain almost stable for a longer period than those that are highly elliptical. Investigate this by studying orbits with the same value of $\beta$ (say, $\beta=2.05$) and comparing the hebavior with different values of the ellipticity of the orbit. You should find that the orientation of orbits that are more nearly circular will rotate more slowly than those that are highly elliptical. (尝试利用不是2的 $\beta$ 值构造圆形轨道，并讨论各种不同轨道情况下的稳定性。)  </p>
+</blockquote>
+<a id="more"></a>
+<p>根据伟大的牛顿万有引力公式</p>
+<p>$$F_G=\frac{GM_SM_E}{r^2}$$ </p>
+<p>我们可以直接写出有心力场下行星的运动方程： </p>
+<p>$$\frac{dv_x}{dt}=-\frac{GM_S x}{x^3}\qquad\frac{dx}{dt}=v_x \<br>\frac{dv_y}{dt}=-\frac{GM_S y}{y^3}\qquad\frac{dy}{dt}=v_y$$  </p>
+<p>太阳系中，我们令距离单位为天文单位，时间单位为年，可以得到 $GM_S=4\pi^2AU^3/yr^2$，那么利用 Euler-Cromer 方法，可以很容易的进行模拟。<br>下面我们简单模拟一下不同偏心率轨道的运动，验证模拟的精度是足够的，可以近似为一条重叠的轨道。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> pl</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">solar_system</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, eccentricity = <span class="number">0</span>, initial_x = <span class="number">1.</span>, beta = <span class="number">2</span>, total_time = <span class="number">20</span>, time_step = <span class="number">0.001</span>, alpha = <span class="number">0</span>)</span>:</span></span><br><span class="line">        self.beta = beta</span><br><span class="line">        self.e = eccentricity</span><br><span class="line">        self.t = np.arange(time_step, total_time + time_step, time_step)</span><br><span class="line">        self.dt = time_step</span><br><span class="line">        self.alpha = alpha</span><br><span class="line">        self.x = initial_x</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 这里我们固定起始位置，并且根据偏心率直接给出可以形成闭合轨道的初始速度</span></span><br><span class="line">        self.x = np.array([self.x])</span><br><span class="line">        self.y = np.array([<span class="number">0</span>])</span><br><span class="line">        self.v_x = np.array([<span class="number">0</span>])</span><br><span class="line">        self.v_y = np.array([<span class="number">2</span> * pi * sqrt((<span class="number">1</span> - self.e)/(<span class="number">1</span> + self.e))])</span><br><span class="line">        self.r = np.array([])</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> self.t:</span><br><span class="line">            self.r = np.append(self.r, sqrt(self.x[<span class="number">-1</span>]**<span class="number">2</span> + self.y[<span class="number">-1</span>]**<span class="number">2</span>))</span><br><span class="line">            self.v_x = np.append(self.v_x, (self.v_x[<span class="number">-1</span>] - self.dt * (<span class="number">4</span>*pi**<span class="number">2</span> * self.x[<span class="number">-1</span>] / self.r[<span class="number">-1</span>] ** (self.beta + <span class="number">1</span>) * (<span class="number">1</span> + self.alpha / self.r[<span class="number">-1</span>] ** <span class="number">2</span>))))</span><br><span class="line">            self.v_y = np.append(self.v_y, (self.v_y[<span class="number">-1</span>] - self.dt * (<span class="number">4</span>*pi**<span class="number">2</span> * self.y[<span class="number">-1</span>] / self.r[<span class="number">-1</span>] ** (self.beta + <span class="number">1</span>) * (<span class="number">1</span> + self.alpha / self.r[<span class="number">-1</span>] ** <span class="number">2</span>))))</span><br><span class="line">            self.x = np.append(self.x, (self.x[<span class="number">-1</span>] + self.v_x[<span class="number">-1</span>] * self.dt))</span><br><span class="line">            self.y = np.append(self.y, (self.y[<span class="number">-1</span>] + self.v_y[<span class="number">-1</span>] * self.dt))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(self, k)</span>:</span></span><br><span class="line">        pl.subplot(k)</span><br><span class="line">        pl.subplots_adjust(wspace = <span class="number">0.3</span>)</span><br><span class="line">        pl.plot(self.x, self.y, linewidth = <span class="number">1</span>)</span><br><span class="line">        pl.plot(<span class="number">0</span>, <span class="number">0</span>, <span class="string">'ro'</span>, markersize = <span class="number">10</span>)</span><br><span class="line">        pl.xlabel(<span class="string">'x (AU)'</span>)</span><br><span class="line">        pl.ylabel(<span class="string">'y (AU)'</span>)</span><br><span class="line">        pl.xlim(<span class="number">-1.2</span>, <span class="number">1.2</span>)</span><br><span class="line">        pl.ylim(<span class="number">-1.2</span>, <span class="number">1.2</span>)</span><br><span class="line">        pl.title(<span class="string">r'Planetary Orbits  $\beta = %.2f\qquad e = %.2f$'</span>% (self.beta, self.e))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    pl.figure(figsize = (<span class="number">12</span>,<span class="number">4</span>), dpi=<span class="number">80</span>)</span><br><span class="line">    k = <span class="number">131</span></span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> (<span class="number">0</span>, <span class="number">0.2</span>, <span class="number">0.3</span>):</span><br><span class="line">        a = solar_system(eccentricity = e)</span><br><span class="line">        a.run()</span><br><span class="line">        a.show(k)</span><br><span class="line">        k += <span class="number">1</span></span><br><span class="line">    pl.show()</span><br></pre></td></tr></table></figure>
+<img src="/2018/11/22/homework7/test_2_0.png">
+<p>可以看到在此时的精度下轨迹可以近似认为是重合的轨迹（当然放大后仍然会发现有抖动），下面我们研究一下在 $\beta\neq 2$ 时，不同偏心率对轨道变化的影响。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> (<span class="number">2.01</span>, <span class="number">2.05</span>, <span class="number">2.1</span>, <span class="number">2.3</span>):</span><br><span class="line">    k = <span class="number">141</span></span><br><span class="line">    pl.figure(figsize = (<span class="number">16.9</span>, <span class="number">4</span>), dpi=<span class="number">80</span>)</span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span>(<span class="number">0</span>, <span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.5</span>):</span><br><span class="line">        a = solar_system(beta = i, eccentricity = e)</span><br><span class="line">        a.run()</span><br><span class="line">        a.show(k)</span><br><span class="line">        k += <span class="number">1</span></span><br><span class="line">    pl.show()</span><br></pre></td></tr></table></figure>
+<img src="/2018/11/22/homework7/test_4_0.png">
+<img src="/2018/11/22/homework7/test_4_1.png">
+<img src="/2018/11/22/homework7/test_4_2.png">
+<img src="/2018/11/22/homework7/test_4_3.png">
+<p>可以发现和题目叙述相同，对于圆形轨道，即使 $\beta\neq 2$，仍然可以形成圆形轨道，当然随着模拟时间的增加，轨道必然会发生变动。<br>但是当轨道的偏心率不为0时，即使对于 $\beta=2.01$ 这么小的偏差，轨道仍然会逐渐进动，不再是一条重叠的轨道。<br>而且可以发现，当偏心率越大，轨道的进动速度越快，这应该是很容易理解的，偏心率越大意味着轨道越椭圆，其近日点和远日点的差距也就越大，从而使得轨道的进动更加迅速。</p>
+<h1 id="Problem-4-11"><a href="#Problem-4-11" class="headerlink" title="Problem 4.11"></a>Problem 4.11</h1><blockquote>
+<p>Investigate how the precession of the perihelion of a planet’s orbit due to general relativity varies as a function of the eccentricity of the orbit. Study the precession of different elliptical orbits with different eccentricities, but with the same value of the perihelion. Let the perihelion have the same value as for Mercury, so that you can compare it with the results shown in this section. (比较相同近地点情况下进动的速率。)</p>
+</blockquote>
+<p>广义相对论下，对万有引力公式有近似的修正</p>
+<p>$$F_G\approx \frac{GM_SM_M}{r^2}(1+\frac{\alpha}{r^2})$$<br>利用广义相对论的修正，可以很好地解释水星的轨道进动现象，下面我们进行一下简单的模拟。这里由于 $\alpha$ 较小，直接模拟会不精确（据说现在精度足够了），我们令 $\alpha=0.0008$ ，然后取不同的离心率，研究一下进动速度和离心率的关系。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mercury</span><span class="params">(solar_system)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">precession</span><span class="params">(self)</span>:</span></span><br><span class="line">        diff = np.diff(np.sign(np.diff(self.r))) <span class="comment"># 寻找近地点</span></span><br><span class="line">        locations = np.where(diff == <span class="number">2</span>)[<span class="number">0</span>] + <span class="number">1</span></span><br><span class="line">        self.need_r = self.r[locations]</span><br><span class="line">        self.need_x = self.x[locations]</span><br><span class="line">        self.need_y = self.y[locations]</span><br><span class="line">        self.need_t = self.t[locations]</span><br><span class="line">        self.theta = np.arccos(self.need_x / self.need_r) * <span class="number">180</span> / pi</span><br><span class="line">        <span class="comment"># self.theta[self.need_y &lt; 0] = 360 - self.theta[self.need_y &lt; 0]</span></span><br><span class="line">        <span class="comment"># self.theta = np.abs(self.theta - 180)</span></span><br><span class="line">        self.func = np.polyfit(self.need_t, self.theta, <span class="number">1</span>) <span class="comment"># 最小二乘法线性拟合</span></span><br><span class="line">        self.y_fit = self.func[<span class="number">0</span>] * self.need_t + self.func[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(self)</span>:</span></span><br><span class="line">        pl.plot(self.need_t, self.theta, <span class="string">'o'</span>, markersize = <span class="number">4</span>)</span><br><span class="line">        pl.plot(self.need_t, self.y_fit, linewidth = <span class="number">1.5</span>, label = <span class="string">r'$e=%.2f\quad\omega=%.3f$'</span>% (self.e, self.func[<span class="number">0</span>]))</span><br><span class="line">        pl.xlabel(<span class="string">'t (yr)'</span>)</span><br><span class="line">        pl.ylabel(<span class="string">r'$\theta(^\circ)$'</span>)</span><br><span class="line">        pl.title(<span class="string">r'Oribit orientation versus time $\alpha = %.4f$'</span>% self.alpha)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    pl.figure(figsize = (<span class="number">8</span>, <span class="number">8</span>), dpi=<span class="number">80</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> (<span class="number">0.1</span>, <span class="number">0.15</span>, <span class="number">0.2</span>, <span class="number">0.25</span>):</span><br><span class="line">        a = Mercury(alpha=<span class="number">0.0008</span>, eccentricity = i, initial_x = (<span class="number">1</span>+i)/(<span class="number">1</span>-i), total_time = <span class="number">5</span>, time_step = <span class="number">0.0001</span>)</span><br><span class="line">        a.run()</span><br><span class="line">        a.precession()</span><br><span class="line">        a.show()</span><br><span class="line">    pl.legend(loc = <span class="string">'lower right'</span>)</span><br><span class="line">    pl.show()</span><br></pre></td></tr></table></figure>
+<img src="/2018/11/22/homework7/test_8_0.png">
+<p>可以发现，轨道进动的速度随着偏心率的增大而减小，但可以看出并不是线性关系，下面取更多数据进行一下计算。(时间不够没模拟出来</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Editing</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://editing.world/2018/11/22/homework7/" title="计算物理第七次作业">https://editing.world/2018/11/22/homework7/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算物理/" rel="tag"># 计算物理</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/23/jupyter/" rel="prev" title="基于 nginx 建立 hexo 和 jupyter 实现在线编辑和科学计算">
+                基于 nginx 建立 hexo 和 jupyter 实现在线编辑和科学计算 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
+            
+              <p class="site-author-name" itemprop="name">Editing</p>
+              <div class="site-description motion-element" itemprop="description">Freedom is Not Free</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://changeless.me" title="http://changeless.me" rel="noopener" target="_blank">千江有水</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.felixc.at" title="https://blog.felixc.at" rel="noopener" target="_blank">Felix's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xyenchi.github.io" title="https://xyenchi.github.io" rel="noopener" target="_blank">Oria's blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem-4-9"><span class="nav-number">1.</span> <span class="nav-text">Problem 4.9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Problem-4-11"><span class="nav-number">2.</span> <span class="nav-text">Problem 4.11</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Editing</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
