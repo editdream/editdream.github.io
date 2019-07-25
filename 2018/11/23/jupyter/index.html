@@ -32,6 +32,30 @@
 
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.2.0">
+
+
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
 
@@ -44,44 +68,19 @@
 
 
 
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.2">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.1.2">
-
-
-
-
-  <meta name="msapplication-config" content="/images/browserconfig.xml">
-
-
-
-
-
 <script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.1.2',
+    version: '7.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: true,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: true,
+    pangu: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -90,15 +89,14 @@
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     }
   };
 </script>
-
-
-  
-
-
-
 
   <meta name="description" content="简介基于 nginx ，在服务器同时搭建了 hexo 和 jupyter，可以使用 jupyter 直接在线编辑 md 并发布，同时能够直接看到 hexo 博客的效果。服务器使用的是 GCP 提供的免费试用服务，域名是 freedom 免费域名，使用 Cloudflare 的 DNS 和 CDN 服务，开启 https 加密。其实就是全部免费啦，可以根据自己的情况换用不同的服务">
 <meta name="keywords" content="jupyter,nginx,hexo">
@@ -129,6 +127,7 @@
   };
 </script>
 
+  
   <title>基于 nginx 建立 hexo 和 jupyter 实现在线编辑和科学计算 | Editing's Dream</title>
   
 
@@ -182,7 +181,7 @@
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
+  <div class="site-meta custom-logo">
     
 
     <div class="custom-logo-site-title">
@@ -193,6 +192,10 @@
       </a>
     </div>
     
+    
+      <a>
+        <img class="custom-logo-image" src="[object Object]" alt="Editing's Dream">
+      </a>
     
   </div>
 
@@ -219,7 +222,6 @@
 
     
     
-    
       
     
 
@@ -234,7 +236,6 @@
           
           <li class="menu-item menu-item-tags">
 
-    
     
     
       
@@ -253,7 +254,6 @@
 
     
     
-    
       
     
 
@@ -268,7 +268,6 @@
           
           <li class="menu-item menu-item-archives">
 
-    
     
     
       
@@ -289,10 +288,6 @@
 
   
 </nav>
-
-
-
-  
 
 
 
@@ -353,13 +348,13 @@
         
 
         <div class="post-meta">
-          <span class="post-time">
 
-            
-            
-            
+          
+          
+          
 
-            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
@@ -372,16 +367,14 @@
               
 
               <time title="创建时间：2018-11-23 11:38:26" itemprop="dateCreated datePublished" datetime="2018-11-23T11:38:26+08:00">2018-11-23</time>
+            </span>
+          
+
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
@@ -389,15 +382,12 @@
                   <span class="post-meta-item-text">更新于</span>
                 
                 <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
-              
+              </span>
             
-          </span>
+          
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -421,6 +411,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -469,6 +464,10 @@
       
     </div>
 
+    
+
+    
+      
     
 
     
@@ -600,147 +599,145 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
+
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
-            
-              <p class="site-author-name" itemprop="name">Editing</p>
-              <div class="site-description motion-element" itemprop="description">Freedom is Not Free</div>
-          </div>
+  
+    <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
+  
+  <p class="site-author-name" itemprop="name">Editing</p>
+  <div class="site-description motion-element" itemprop="description">Freedom is Not Free</div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://changeless.me" title="http://changeless.me" rel="noopener" target="_blank">千江有水</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.felixc.at" title="https://blog.felixc.at" rel="noopener" target="_blank">Felix's Blog</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://xyenchi.github.io" title="https://xyenchi.github.io" rel="noopener" target="_blank">Oria's blog</a>
+        </li>
+      
+    </ul>
+  </div>
+
 
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">7</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">16</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
           
-
-          
-
-          
-
-          
-
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://changeless.me" title="http://changeless.me" rel="noopener" target="_blank">千江有水</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.felixc.at" title="https://blog.felixc.at" rel="noopener" target="_blank">Felix's Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://xyenchi.github.io" title="https://xyenchi.github.io" rel="noopener" target="_blank">Oria's blog</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
         </div>
       </div>
 
@@ -767,7 +764,7 @@
 
     </div>
   </aside>
-  
+  <div id="sidebar-dimmer"></div>
 
 
         
@@ -796,7 +793,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
 
 
 
@@ -826,6 +823,7 @@
     
 
     
+
   </div>
 
   
@@ -841,6 +839,11 @@
 
 
 
+  
+
+
+
+
 
   
 
@@ -849,6 +852,8 @@
 
 
 
+
+  
   
 
 
@@ -859,17 +864,14 @@
 
 
 
-
-
-
-
-
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
-  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
 
   
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
@@ -877,16 +879,12 @@
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  
-  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
-  
 
+  <script src="/js/utils.js?v=7.2.0"></script>
 
-  <script src="/js/utils.js?v=7.1.2"></script>
-
-  <script src="/js/motion.js?v=7.1.2"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
 
 
 
@@ -894,23 +892,19 @@
   
 
 
-  <script src="/js/affix.js?v=7.1.2"></script>
+  <script src="/js/affix.js?v=7.2.0"></script>
 
-  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
-
-
-
-  
-  <script src="/js/scrollspy.js?v=7.1.2"></script>
-<script src="/js/post-details.js?v=7.1.2"></script>
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
 
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
 
 
-  <script src="/js/next-boot.js?v=7.1.2"></script>
 
+  <script src="/js/next-boot.js?v=7.2.0"></script>
 
   
 
@@ -918,20 +912,6 @@
 
   
 
-  
-
-
-  
-
-
-  
-
-
-
-
-  
-
-  
 
   
   
@@ -942,25 +922,56 @@
   
 
 
-  
+
+
+
+
+
+
+
+
 
   
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
 
   
 

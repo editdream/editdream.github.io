@@ -32,6 +32,30 @@
 
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.2.0">
+
+
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
 
@@ -44,44 +68,19 @@
 
 
 
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.2">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.1.2">
-
-
-
-
-  <meta name="msapplication-config" content="/images/browserconfig.xml">
-
-
-
-
-
 <script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.1.2',
+    version: '7.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: true,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: true,
+    pangu: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -90,15 +89,14 @@
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     }
   };
 </script>
-
-
-  
-
-
-
 
   <meta name="description" content="转载自Github作者 CT-ABT  近日，一篇题为〈我是中国人，Google 的蜻蜓项目必须继续〉[1]的文章开始在 GitHub 上传播。文章作者强调说「百度竞价排名广告臭名昭著，很多人受骗上当、损失金钱、健康受损，甚至死亡」，并举例「魏则西」事件，称 Google 「返华」将有助于避免此类事件。该文作者同时列举了一个数据，称 Google 「返华」将拯救 551,615,600 名百度使">
 <meta name="keywords" content="Google">
@@ -108,12 +106,10 @@
 <meta property="og:site_name" content="Editing&#39;s Dream">
 <meta property="og:description" content="转载自Github作者 CT-ABT  近日，一篇题为〈我是中国人，Google 的蜻蜓项目必须继续〉[1]的文章开始在 GitHub 上传播。文章作者强调说「百度竞价排名广告臭名昭著，很多人受骗上当、损失金钱、健康受损，甚至死亡」，并举例「魏则西」事件，称 Google 「返华」将有助于避免此类事件。该文作者同时列举了一个数据，称 Google 「返华」将拯救 551,615,600 名百度使">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://hiberna.memorata.me/ud/global%20disruptions.png">
 <meta property="og:updated_time" content="2019-06-03T18:48:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同样作为中国大陆人，我为什么坚决反对「蜻蜓」项目">
 <meta name="twitter:description" content="转载自Github作者 CT-ABT  近日，一篇题为〈我是中国人，Google 的蜻蜓项目必须继续〉[1]的文章开始在 GitHub 上传播。文章作者强调说「百度竞价排名广告臭名昭著，很多人受骗上当、损失金钱、健康受损，甚至死亡」，并举例「魏则西」事件，称 Google 「返华」将有助于避免此类事件。该文作者同时列举了一个数据，称 Google 「返华」将拯救 551,615,600 名百度使">
-<meta name="twitter:image" content="http://hiberna.memorata.me/ud/global%20disruptions.png">
 
 
 
@@ -131,6 +127,7 @@
   };
 </script>
 
+  
   <title>同样作为中国大陆人，我为什么坚决反对「蜻蜓」项目 | Editing's Dream</title>
   
 
@@ -184,7 +181,7 @@
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
+  <div class="site-meta custom-logo">
     
 
     <div class="custom-logo-site-title">
@@ -195,6 +192,10 @@
       </a>
     </div>
     
+    
+      <a>
+        <img class="custom-logo-image" src="[object Object]" alt="Editing's Dream">
+      </a>
     
   </div>
 
@@ -221,7 +222,6 @@
 
     
     
-    
       
     
 
@@ -236,7 +236,6 @@
           
           <li class="menu-item menu-item-tags">
 
-    
     
     
       
@@ -255,7 +254,6 @@
 
     
     
-    
       
     
 
@@ -270,7 +268,6 @@
           
           <li class="menu-item menu-item-archives">
 
-    
     
     
       
@@ -291,10 +288,6 @@
 
   
 </nav>
-
-
-
-  
 
 
 
@@ -355,13 +348,13 @@
         
 
         <div class="post-meta">
-          <span class="post-time">
 
-            
-            
-            
+          
+          
+          
 
-            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
@@ -374,16 +367,14 @@
               
 
               <time title="创建时间：2018-12-04 12:42:33" itemprop="dateCreated datePublished" datetime="2018-12-04T12:42:33+08:00">2018-12-04</time>
+            </span>
+          
+
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
@@ -391,15 +382,12 @@
                   <span class="post-meta-item-text">更新于</span>
                 
                 <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
-              
+              </span>
             
-          </span>
+          
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -423,6 +411,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -456,7 +449,7 @@
 <p>事实上，Google「退出」中国后，其多数服务仍旧可以直接使用，如搜索、Gmail 等（剩余的少数如 YouTube 等本来就因为并非 Google 方面的原因而不可访问）。这些服务的访问有时会受到干扰，但并非完全无法访问。直至 2013 年春天，还只是「触发『敏感词』后被断开连接 90 秒」。Google 的所有服务的完全无法直接访问一事是发生在 2014 年的 5 月末尾<sup>[3]</sup>，这时距离其「退出」中国的声明已过去 4 年有余了，而且这一次的完全无法直接访问事件并未有任何有迹可循的触发点，并非是 Google 又做出了怎样的举动导致。</p>
 <p>换句话说，Google 服务的在中国大陆地区完全无法直接访问一事，既并非由其于 2010 年所作出的「退出中国」声明所导致（其时间点也并非彼时），也不是出于 Google 这一方面的原因。将这 551,615,600 人不能使用 Google 服务的责任推给 Google, 是毫无逻辑的。Google 的服务无时无刻不在无差别地向所有人提供，这 551,615,600 人无法访问的原因根本不在 Google. 至于原作者不知因何情绪激动地喊出「你们这一小撮人剥夺……」的话语，我也只能反问，「我们这一小撮人」是谁，我们干了啥，我们有多大能量啊？？？</p>
 <p>实际上，在全球 200 多个国家和地区中，完全彻底地无法访问 Google 所有服务的国家仅此一家。根据 Google 的透明度报告<sup>[4]</sup>，除了中国大陆地区之外，只有伊朗和刚果（布）的用户有限度地无法访问 Google 的部分服务。如下图所示，Google 将「无法访问」一事分为了 5 个等级，0 为完全畅通，5 为完全「无法访问」，这其中刚果（布）是 1, 伊朗是 2, 中国大陆地区是 5.</p>
-<p><img src="http://hiberna.memorata.me/ud/global%20disruptions.png" alt=""></p>
+<p><img alt="" data-src="http://hiberna.memorata.me/ud/global%20disruptions.png"></p>
 <h2 id="「Google-『返华』有助于提高中国大陆地区用户的搜索质量、遏制『魏则西』类似事件的发生」的观点事实不成立、逻辑也不对"><a href="#「Google-『返华』有助于提高中国大陆地区用户的搜索质量、遏制『魏则西』类似事件的发生」的观点事实不成立、逻辑也不对" class="headerlink" title="「Google 『返华』有助于提高中国大陆地区用户的搜索质量、遏制『魏则西』类似事件的发生」的观点事实不成立、逻辑也不对"></a>「Google 『返华』有助于提高中国大陆地区用户的搜索质量、遏制『魏则西』类似事件的发生」的观点事实不成立、逻辑也不对</h2><p>原作者所抛出的「Google 『返华』将有助于提高中国大陆地区用户的搜索质量、遏制『魏则西』类似事件的发生」的观点，既在事实上不成立，又没有逻辑。</p>
 <p>事实上不成立之1：Google 尚未「离华」的时候，百度就已经是这样的百度了。在 2008 年和 2010 年都爆发过比较大的针对百度竞价排名广告的声讨。Google 是否「在华」并不能够影响百度的运作。</p>
 <p>事实上不成立之2：百度的市占比并不怎么受到 Google 的「在华」与否的影响。在Google「退出」中国之前，百度也有过市占比达到 71.03% 的高光时刻（Aug 2009），在 Google 「退出」中国之后，百度也有过跌至 50.69% 的时候（Apr 2014）。对比 Google 宣布「退出」中国的 2010 年三月和如今的 2018 年十月，百度的市场份额不过是从 55.57% 变为了 65.05%, 而纵观从 statcounter 收录百度以来（Mar 2009）其市占比的变化，大多数时间里都是在 50% 以上、80% 以下的范围内来回浮动。换句话说，百度在中国大陆的搜索引擎市场从来就占据主导地位，与 Google 的「在华」与否并不构成怎样的相关性。</p>
@@ -534,6 +527,10 @@
       
     </div>
 
+    
+
+    
+      
     
 
     
@@ -661,147 +658,145 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
+
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
-            
-              <p class="site-author-name" itemprop="name">Editing</p>
-              <div class="site-description motion-element" itemprop="description">Freedom is Not Free</div>
-          </div>
+  
+    <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
+  
+  <p class="site-author-name" itemprop="name">Editing</p>
+  <div class="site-description motion-element" itemprop="description">Freedom is Not Free</div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://changeless.me" title="http://changeless.me" rel="noopener" target="_blank">千江有水</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.felixc.at" title="https://blog.felixc.at" rel="noopener" target="_blank">Felix's Blog</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://xyenchi.github.io" title="https://xyenchi.github.io" rel="noopener" target="_blank">Oria's blog</a>
+        </li>
+      
+    </ul>
+  </div>
+
 
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">7</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">16</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
           
-
-          
-
-          
-
-          
-
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://changeless.me" title="http://changeless.me" rel="noopener" target="_blank">千江有水</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.felixc.at" title="https://blog.felixc.at" rel="noopener" target="_blank">Felix's Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://xyenchi.github.io" title="https://xyenchi.github.io" rel="noopener" target="_blank">Oria's blog</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
         </div>
       </div>
 
@@ -828,7 +823,7 @@
 
     </div>
   </aside>
-  
+  <div id="sidebar-dimmer"></div>
 
 
         
@@ -857,7 +852,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
 
 
 
@@ -887,6 +882,7 @@
     
 
     
+
   </div>
 
   
@@ -902,6 +898,11 @@
 
 
 
+  
+
+
+
+
 
   
 
@@ -910,6 +911,8 @@
 
 
 
+
+  
   
 
 
@@ -920,17 +923,14 @@
 
 
 
-
-
-
-
-
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
-  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
 
   
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
@@ -938,16 +938,12 @@
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  
-  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
-  
 
+  <script src="/js/utils.js?v=7.2.0"></script>
 
-  <script src="/js/utils.js?v=7.1.2"></script>
-
-  <script src="/js/motion.js?v=7.1.2"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
 
 
 
@@ -955,23 +951,19 @@
   
 
 
-  <script src="/js/affix.js?v=7.1.2"></script>
+  <script src="/js/affix.js?v=7.2.0"></script>
 
-  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
-
-
-
-  
-  <script src="/js/scrollspy.js?v=7.1.2"></script>
-<script src="/js/post-details.js?v=7.1.2"></script>
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
 
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
 
 
-  <script src="/js/next-boot.js?v=7.1.2"></script>
 
+  <script src="/js/next-boot.js?v=7.2.0"></script>
 
   
 
@@ -979,20 +971,6 @@
 
   
 
-  
-
-
-  
-
-
-  
-
-
-
-
-  
-
-  
 
   
   
@@ -1003,25 +981,56 @@
   
 
 
-  
+
+
+
+
+
+
+
+
 
   
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
 
   
 

@@ -32,6 +32,30 @@
 
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.2.0">
+
+
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
 
@@ -44,44 +68,19 @@
 
 
 
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.2">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.1.2">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.1.2">
-
-
-
-
-  <meta name="msapplication-config" content="/images/browserconfig.xml">
-
-
-
-
-
 <script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.1.2',
+    version: '7.2.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: true,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: true,
+    pangu: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -90,15 +89,14 @@
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
     }
   };
 </script>
-
-
-  
-
-
-
 
   <meta name="description" content="不知不觉又到了年底了，是一个适合写年终总结的日子。由于天气渐冷，逐渐咸鱼（本来就是），估计也不会做什么新的拼图了，就总结一下入坑两年多以来做过的哪些拼图吧，以此纪念一下自己的 Ingress 岁月。   首先还是想要感谢这个游戏，没有你的话我估计不可能走过这么多路，认识这么多人，发现每一座城市不一样的那些风景。虽然这个垃圾游戏越搞越凉，但还是不会弃坑的吧。 然后要感谢这几年认识的这些大佬们，虽然我">
 <meta name="keywords" content="Ingress">
@@ -108,33 +106,10 @@
 <meta property="og:site_name" content="Editing&#39;s Dream">
 <meta property="og:description" content="不知不觉又到了年底了，是一个适合写年终总结的日子。由于天气渐冷，逐渐咸鱼（本来就是），估计也不会做什么新的拼图了，就总结一下入坑两年多以来做过的哪些拼图吧，以此纪念一下自己的 Ingress 岁月。   首先还是想要感谢这个游戏，没有你的话我估计不可能走过这么多路，认识这么多人，发现每一座城市不一样的那些风景。虽然这个垃圾游戏越搞越凉，但还是不会弃坑的吧。 然后要感谢这几年认识的这些大佬们，虽然我">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/whu_1.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/whu_2.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/wuhan_1.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/wuhan_2.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/wuhan_3.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/wuhan_4.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/changsha.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/hichengdu.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/chengdu_1.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/chengdu_2.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/chongqing_1.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/chongqing_2.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/hangzhou_1.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/hangzhou_2.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/hangzhou_3.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/nanjing_1.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/nanjing_2.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/dalian.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/yantai.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/qingdao.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/md_jinan.jpg">
-<meta property="og:image" content="https://editing.world/2018/12/02/ingress-banners/md_dalian.jpg">
-<meta property="og:updated_time" content="2019-06-03T18:48:34.000Z">
+<meta property="og:updated_time" content="2019-07-25T05:00:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ingress 拼图及其他">
 <meta name="twitter:description" content="不知不觉又到了年底了，是一个适合写年终总结的日子。由于天气渐冷，逐渐咸鱼（本来就是），估计也不会做什么新的拼图了，就总结一下入坑两年多以来做过的哪些拼图吧，以此纪念一下自己的 Ingress 岁月。   首先还是想要感谢这个游戏，没有你的话我估计不可能走过这么多路，认识这么多人，发现每一座城市不一样的那些风景。虽然这个垃圾游戏越搞越凉，但还是不会弃坑的吧。 然后要感谢这几年认识的这些大佬们，虽然我">
-<meta name="twitter:image" content="https://editing.world/2018/12/02/ingress-banners/whu_1.jpg">
 
 
 
@@ -152,6 +127,7 @@
   };
 </script>
 
+  
   <title>Ingress 拼图及其他 | Editing's Dream</title>
   
 
@@ -205,7 +181,7 @@
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
+  <div class="site-meta custom-logo">
     
 
     <div class="custom-logo-site-title">
@@ -216,6 +192,10 @@
       </a>
     </div>
     
+    
+      <a>
+        <img class="custom-logo-image" src="[object Object]" alt="Editing's Dream">
+      </a>
     
   </div>
 
@@ -242,7 +222,6 @@
 
     
     
-    
       
     
 
@@ -257,7 +236,6 @@
           
           <li class="menu-item menu-item-tags">
 
-    
     
     
       
@@ -276,7 +254,6 @@
 
     
     
-    
       
     
 
@@ -291,7 +268,6 @@
           
           <li class="menu-item menu-item-archives">
 
-    
     
     
       
@@ -312,10 +288,6 @@
 
   
 </nav>
-
-
-
-  
 
 
 
@@ -376,13 +348,13 @@
         
 
         <div class="post-meta">
-          <span class="post-time">
 
-            
-            
-            
+          
+          
+          
 
-            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
@@ -395,32 +367,27 @@
               
 
               <time title="创建时间：2018-12-02 01:15:09" itemprop="dateCreated datePublished" datetime="2018-12-02T01:15:09+08:00">2018-12-02</time>
+            </span>
+          
+
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
-              
+                <time title="修改时间：2019-07-25 13:00:44" itemprop="dateModified" datetime="2019-07-25T13:00:44+08:00">2019-07-25</time>
+              </span>
             
-          </span>
+          
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -448,6 +415,11 @@
 
           
 
+          <br>
+          
+
+          
+
           
 
         </div>
@@ -469,48 +441,65 @@
 <p>下面就是那些年我做过的拼图了，大体按照地理位置分类，没有严格按照时间（可以自行 ping 我查看）。</p>
 <p><strong>拼图名字不保证完全正确，仅供参考</strong></p>
 <a id="more"></a>
+<h2 id="上海"><a href="#上海" class="headerlink" title="上海"></a>上海</h2><p>借着公费旅游的机会，去了两次上海，做了不少任务。不愧是一线城市，就是棒啊。</p>
+<p>分别为 5 km s - Shanghai，Darkened Lujiazui，Welcome to RSH，The Bund in the rain，像素biu~兔子，Daydreaming SH，黄昏下的月台。</p>
+<img data-src="/2018/12/02/ingress-banners/shanghai_1.jpg">
+<img data-src="/2018/12/02/ingress-banners/shanghai_2.jpg">
+<img data-src="/2018/12/02/ingress-banners/shanghai_3.jpg">
+<h2 id="苏州"><a href="#苏州" class="headerlink" title="苏州"></a>苏州</h2><p>既然来了上海，隔壁就是苏州，何不去游一圈看看苏博？只做了一套任务，别说了可否一战。</p>
+<img data-src="/2018/12/02/ingress-banners/suzhou.jpg">
+<h2 id="广州"><a href="#广州" class="headerlink" title="广州"></a>广州</h2><p>去广州和深圳的单独写了篇<a href="https://editing.world/2019/01/13/guangdong-journey/">游记</a>，之后又去了一次广州，顺手做了一套不错的拼图，广州24小时不打烊。</p>
+<img data-src="/2018/12/02/ingress-banners/guangzhou.jpg">
 <h2 id="武大四季"><a href="#武大四季" class="headerlink" title="武大四季"></a>武大四季</h2><p>分别为春夏秋冬，感谢佳能学长提供原图并组织申请任务。</p>
-<img src="/2018/12/02/ingress-banners/whu_1.jpg">
-<img src="/2018/12/02/ingress-banners/whu_2.jpg">
+<img data-src="/2018/12/02/ingress-banners/whu_1.jpg">
+<img data-src="/2018/12/02/ingress-banners/whu_2.jpg">
 <h2 id="武汉"><a href="#武汉" class="headerlink" title="武汉"></a>武汉</h2><p>分别为 IFS3.0，辛亥革命，江汉关，IFS2.0，珞樱，樱顶，武大校名，IFS1.0，天际线</p>
-
-<img src="/2018/12/02/ingress-banners/wuhan_1.jpg">
-<img src="/2018/12/02/ingress-banners/wuhan_2.jpg">
-<img src="/2018/12/02/ingress-banners/wuhan_3.jpg">
-<img src="/2018/12/02/ingress-banners/wuhan_4.jpg">
+<img data-src="/2018/12/02/ingress-banners/ifs_3.jpg">
+<img data-src="/2018/12/02/ingress-banners/wuhan_1.jpg">
+<img data-src="/2018/12/02/ingress-banners/wuhan_2.jpg">
+<img data-src="/2018/12/02/ingress-banners/wuhan_3.jpg">
+<img data-src="/2018/12/02/ingress-banners/wuhan_4.jpg">
+<p>之后参加了 IFS4.0，终于拿到了官方的牌子，顺手做了一下自己申的纪念任务（图来自小清姐）。</p>
+<img data-src="/2018/12/02/ingress-banners/ifs_4.jpg">
 <h2 id="长沙"><a href="#长沙" class="headerlink" title="长沙"></a>长沙</h2><p>分别为橘子洲头和天心阁，感谢前者让我在橘子洲走了两圈并且遇到了长沙菊苣<a href="http://changeless.me" target="_blank" rel="noopener">头子</a>。</p>
-<img src="/2018/12/02/ingress-banners/changsha.jpg">
+<img data-src="/2018/12/02/ingress-banners/changsha_1.jpg">
+<p>之后于19年夏又去了一次长沙，主要是为了看一下终于开放的湖南省博，不知为何又做了一套拼图。得到的结论就是长沙的任务都好坑！！！慎做！！！</p>
+<img data-src="/2018/12/02/ingress-banners/changsha_2.jpg">
 <h2 id="成都"><a href="#成都" class="headerlink" title="成都"></a>成都</h2><p>分别为 Hi 成都，文殊院，绘系列，风之诗与旅人，锦里，人间成都，doge，川大表情包，熊猫黑牌。</p>
 <p>怀念成都的美食和一切，有缘一定再会！</p>
-<img src="/2018/12/02/ingress-banners/hichengdu.jpg">
-<img src="/2018/12/02/ingress-banners/chengdu_1.jpg">
-<img src="/2018/12/02/ingress-banners/chengdu_2.jpg">
+<img data-src="/2018/12/02/ingress-banners/hichengdu.jpg">
+<img data-src="/2018/12/02/ingress-banners/chengdu_1.jpg">
+<img data-src="/2018/12/02/ingress-banners/chengdu_2.jpg">
 <h2 id="重庆"><a href="#重庆" class="headerlink" title="重庆"></a>重庆</h2><p>分别为龙头寺公园，明日香，重庆大学。</p>
 <p>重庆给我留下印象最深的就是亲爱的重庆北站，有缘也不要去了吧。</p>
-<img src="/2018/12/02/ingress-banners/chongqing_1.jpg">
-<img src="/2018/12/02/ingress-banners/chongqing_2.jpg">
+<img data-src="/2018/12/02/ingress-banners/chongqing_1.jpg">
+<img data-src="/2018/12/02/ingress-banners/chongqing_2.jpg">
 <h2 id="杭州"><a href="#杭州" class="headerlink" title="杭州"></a>杭州</h2><p>分别为 Adventure in Song Dynasty，浙大校庆纪念任务，月下雷峰影片，杭州 MD 纪念任务，梵高印象，博物馆找兔兔，西湖遇上火烧云，西湖寻龙。</p>
 <p>这是第一次为了玩游戏去一个地方，不过意外发现冬天的杭州也别有风味，希望还能再会。另外特别感谢雷峰塔任务帮助我在半夜绕西湖两圈（并且白天发现做错了又绕了一圈）。</p>
-<img src="/2018/12/02/ingress-banners/hangzhou_1.jpg">
-<img src="/2018/12/02/ingress-banners/hangzhou_2.jpg">
-<img src="/2018/12/02/ingress-banners/hangzhou_3.jpg">
+<img data-src="/2018/12/02/ingress-banners/hangzhou_1.jpg">
+<img data-src="/2018/12/02/ingress-banners/hangzhou_2.jpg">
+<img data-src="/2018/12/02/ingress-banners/hangzhou_3.jpg">
 <h2 id="南京"><a href="#南京" class="headerlink" title="南京"></a>南京</h2><p>分别为你离开了南京 从此再没人和我说话，（未找到名字），起风了 妄想重返，你的名字。</p>
 <p>五一假期去的，好多地方没能去看，未免遗憾。</p>
-<img src="/2018/12/02/ingress-banners/nanjing_1.jpg">
-<img src="/2018/12/02/ingress-banners/nanjing_2.jpg">
+<img data-src="/2018/12/02/ingress-banners/nanjing_1.jpg">
+<img data-src="/2018/12/02/ingress-banners/nanjing_2.jpg">
 <h2 id="大连-amp-烟台"><a href="#大连-amp-烟台" class="headerlink" title="大连 &amp; 烟台"></a>大连 &amp; 烟台</h2><p>去大连 MD 的路上做的，分别是看我资料干啥，四时野趣，星海广场看大桥，烟台 IFS。</p>
-<img src="/2018/12/02/ingress-banners/dalian.jpg">
-<img src="/2018/12/02/ingress-banners/yantai.jpg">
+<img data-src="/2018/12/02/ingress-banners/dalian.jpg">
+<img data-src="/2018/12/02/ingress-banners/yantai.jpg">
 <h2 id="青岛"><a href="#青岛" class="headerlink" title="青岛"></a>青岛</h2><p>入坑时最早的任务和第一套拼图，然而因为手机没电和 too young to take 充电宝，所以至今没有完成（咕咕咕）。</p>
-<img src="/2018/12/02/ingress-banners/qingdao.jpg">
+<img data-src="/2018/12/02/ingress-banners/qingdao.jpg">
 <h2 id="Mission-Day"><a href="#Mission-Day" class="headerlink" title="Mission Day"></a>Mission Day</h2><p>严格来讲不算拼图，分别是济南和大连，也是我唯二参加的 MD。吹爆大连的任务图标！</p>
-<img src="/2018/12/02/ingress-banners/md_jinan.jpg">
-<img src="/2018/12/02/ingress-banners/md_dalian.jpg">
+<img data-src="/2018/12/02/ingress-banners/md_jinan.jpg">
+<img data-src="/2018/12/02/ingress-banners/md_dalian.jpg">
 <p>感谢读到这里，期待新的一年能有更好的记忆，祝好！</p>
 
       
     </div>
 
+    
+
+    
+      
     
 
     
@@ -638,147 +627,145 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
+
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
-            
-              <p class="site-author-name" itemprop="name">Editing</p>
-              <div class="site-description motion-element" itemprop="description">Freedom is Not Free</div>
-          </div>
+  
+    <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
+  
+  <p class="site-author-name" itemprop="name">Editing</p>
+  <div class="site-description motion-element" itemprop="description">Freedom is Not Free</div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://changeless.me" title="http://changeless.me" rel="noopener" target="_blank">千江有水</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.felixc.at" title="https://blog.felixc.at" rel="noopener" target="_blank">Felix's Blog</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://xyenchi.github.io" title="https://xyenchi.github.io" rel="noopener" target="_blank">Oria's blog</a>
+        </li>
+      
+    </ul>
+  </div>
+
 
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">7</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">16</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
           
-
-          
-
-          
-
-          
-
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://changeless.me" title="http://changeless.me" rel="noopener" target="_blank">千江有水</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.felixc.at" title="https://blog.felixc.at" rel="noopener" target="_blank">Felix's Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://xyenchi.github.io" title="https://xyenchi.github.io" rel="noopener" target="_blank">Oria's blog</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
         </div>
       </div>
 
@@ -793,7 +780,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#武大四季"><span class="nav-number">1.</span> <span class="nav-text">武大四季</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#武汉"><span class="nav-number">2.</span> <span class="nav-text">武汉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长沙"><span class="nav-number">3.</span> <span class="nav-text">长沙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成都"><span class="nav-number">4.</span> <span class="nav-text">成都</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重庆"><span class="nav-number">5.</span> <span class="nav-text">重庆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杭州"><span class="nav-number">6.</span> <span class="nav-text">杭州</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#南京"><span class="nav-number">7.</span> <span class="nav-text">南京</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大连-amp-烟台"><span class="nav-number">8.</span> <span class="nav-text">大连 &amp; 烟台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#青岛"><span class="nav-number">9.</span> <span class="nav-text">青岛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mission-Day"><span class="nav-number">10.</span> <span class="nav-text">Mission Day</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#上海"><span class="nav-number">1.</span> <span class="nav-text">上海</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#苏州"><span class="nav-number">2.</span> <span class="nav-text">苏州</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广州"><span class="nav-number">3.</span> <span class="nav-text">广州</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#武大四季"><span class="nav-number">4.</span> <span class="nav-text">武大四季</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#武汉"><span class="nav-number">5.</span> <span class="nav-text">武汉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长沙"><span class="nav-number">6.</span> <span class="nav-text">长沙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成都"><span class="nav-number">7.</span> <span class="nav-text">成都</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重庆"><span class="nav-number">8.</span> <span class="nav-text">重庆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杭州"><span class="nav-number">9.</span> <span class="nav-text">杭州</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#南京"><span class="nav-number">10.</span> <span class="nav-text">南京</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大连-amp-烟台"><span class="nav-number">11.</span> <span class="nav-text">大连 &amp; 烟台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#青岛"><span class="nav-number">12.</span> <span class="nav-text">青岛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mission-Day"><span class="nav-number">13.</span> <span class="nav-text">Mission Day</span></a></li></ol></div>
             
 
           </div>
@@ -805,7 +792,7 @@
 
     </div>
   </aside>
-  
+  <div id="sidebar-dimmer"></div>
 
 
         
@@ -834,7 +821,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
 
 
 
@@ -864,6 +851,7 @@
     
 
     
+
   </div>
 
   
@@ -879,6 +867,11 @@
 
 
 
+  
+
+
+
+
 
   
 
@@ -887,6 +880,8 @@
 
 
 
+
+  
   
 
 
@@ -897,17 +892,14 @@
 
 
 
-
-
-
-
-
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
-  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
 
   
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
@@ -915,16 +907,12 @@
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  
-  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
-  
 
+  <script src="/js/utils.js?v=7.2.0"></script>
 
-  <script src="/js/utils.js?v=7.1.2"></script>
-
-  <script src="/js/motion.js?v=7.1.2"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
 
 
 
@@ -932,23 +920,19 @@
   
 
 
-  <script src="/js/affix.js?v=7.1.2"></script>
+  <script src="/js/affix.js?v=7.2.0"></script>
 
-  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
-
-
-
-  
-  <script src="/js/scrollspy.js?v=7.1.2"></script>
-<script src="/js/post-details.js?v=7.1.2"></script>
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
 
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
 
 
-  <script src="/js/next-boot.js?v=7.1.2"></script>
 
+  <script src="/js/next-boot.js?v=7.2.0"></script>
 
   
 
@@ -956,20 +940,6 @@
 
   
 
-  
-
-
-  
-
-
-  
-
-
-
-
-  
-
-  
 
   
   
@@ -980,25 +950,56 @@
   
 
 
-  
+
+
+
+
+
+
+
+
 
   
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
 
   
 
