@@ -4,93 +4,55 @@
 
 
 
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.2.0">
-
-
-
-
+<meta name="generator" content="Hexo 3.8.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.4.0">
   <meta name="msapplication-config" content="/images/browserconfig.xml">
 
-
-
-
-<link rel="stylesheet" href="/css/main.css?v=7.2.0">
-
-
-
-
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
-
-
-
-
-
-
-<script id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.2.0',
+    version: '7.4.0',
+    exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
       copy_failure: '复制失败'
-    }
+    },
+    sidebarPadding: 40
   };
 </script>
 
@@ -104,24 +66,20 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Editing&#39;s Dream">
 <meta name="twitter:description" content="Freedom is Not Free">
-
-
-
-
-
-  
-  
   <link rel="canonical" href="https://editing.world/">
 
 
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
-  
   <title>Editing's Dream</title>
   
 
@@ -132,13 +90,8 @@
 
 
 
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -147,7 +100,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .logo,
   .use-motion .site-title,
@@ -163,31 +116,21 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
-    
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Editing's Dream</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-    
   </div>
 
   <div class="site-nav-toggle">
@@ -200,120 +143,79 @@
 </div>
 
 
-
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
+  <ul id="menu" class="menu">
+      
+      
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home menu-item-active">
-
-    
-    
+        <li class="menu-item menu-item-home">
       
-    
-
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
     
 
     <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
     
 
     <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
     
 
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
+  </ul>
 
-      
-      
-    </ul>
-  
-
-  
-
-  
 </nav>
-
-
-
 </div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
             
 
-          
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
+  <div id="posts" class="posts-expand">
+        <article itemscope="" itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2019/06/06/travis/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -325,35 +227,19 @@
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/06/travis/" class="post-title-link" itemprop="url">使用 travis 持续集成生成 hexo 博客</a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2019/06/06/travis/" class="post-title-link" itemprop="url">使用 travis 持续集成生成 hexo 博客</a>
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -362,21 +248,15 @@
               <time title="创建时间：2019-06-06 00:51:27 / 修改时间：03:07:04" itemprop="dateCreated datePublished" datetime="2019-06-06T00:51:27+08:00">2019-06-06</time>
             </span>
           
-
-          
             
 
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
@@ -387,27 +267,9 @@
           
 
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -415,14 +277,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>之前在 vps 搭建了简单的 hexo 工作环境，配合 git 发布插件可以一键发布网页。之后使用 git 在电脑和 vps 之间同步了源码，可以在本地方便的编辑后 push 到 GitHub，之后在 vps 生成发布。最近发现了 Travis 自动集成工具，可以方便的读取 GitHub repo 进行自动集成，只需要绑定后简单配置 <code>.travis.yml</code> 即可。下面简单介绍配置过程和遇到的问题。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2019/06/06/travis/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -434,57 +292,24 @@
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope="" itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2019/06/03/source-han/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -496,35 +321,19 @@
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/03/source-han/" class="post-title-link" itemprop="url">Acrobat DC 思源字体兼容问题</a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2019/06/03/source-han/" class="post-title-link" itemprop="url">Acrobat DC 思源字体兼容问题</a>
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -533,8 +342,6 @@
               <time title="创建时间：2019-06-03 23:41:03" itemprop="dateCreated datePublished" datetime="2019-06-03T23:41:03+08:00">2019-06-03</time>
             </span>
           
-
-          
             
 
             
@@ -542,22 +349,16 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
               </span>
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/坑底笔记/" itemprop="url" rel="index"><span itemprop="name">坑底笔记</span></a></span>
 
@@ -568,27 +369,9 @@
           
 
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -596,10 +379,6 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <p>由于 Windows 系统自带的字体显示效果较差，特别是日常使用最多的宋体和黑体，因此在日常编辑文件时使用了<a href="https://github.com/adobe-fonts/source-han-sans" target="_blank" rel="noopener">思源黑体（Source Han Sans）</a>和<a href="https://github.com/adobe-fonts/source-han-serif" target="_blank" rel="noopener">思源宋体（Source Han Serif）</a>进行替代，显示效果更优秀。</p>
 <p>根据官方建议，选择了 Super OTC 字体文件安装使用。</p>
 <blockquote>
@@ -609,7 +388,7 @@
 <p>然而在使用 Microsoft Word 导出 PDF 时发现生成的文件中文字内容被转成图片格式，说明使用的 otc 文件不能完全兼容，无法内嵌到 PDF 文件中。改用网友制作的 ttf 文件后发现生成的 PDF 文件过大，包含了整个字体集。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2019/06/03/source-han/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -621,57 +400,24 @@
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope="" itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2019/06/02/lixianlong/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -683,35 +429,19 @@
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/02/lixianlong/" class="post-title-link" itemprop="url">李显龙在18届香格里拉对话发表主旨演讲</a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2019/06/02/lixianlong/" class="post-title-link" itemprop="url">李显龙在18届香格里拉对话发表主旨演讲</a>
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -720,8 +450,6 @@
               <time title="创建时间：2019-06-02 17:16:03" itemprop="dateCreated datePublished" datetime="2019-06-02T17:16:03+08:00">2019-06-02</time>
             </span>
           
-
-          
             
 
             
@@ -729,22 +457,16 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
               </span>
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/转载/" itemprop="url" rel="index"><span itemprop="name">转载</span></a></span>
 
@@ -755,27 +477,9 @@
           
 
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -783,10 +487,6 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <p>新加坡总理李显龙出席今年的香格里拉对话（Shangri-La Dialogue），并在开幕晚宴上发表主旨演讲，强调稳定和具建设性的中美关系对区域安全的重要性。</p>
 <p>李显龙总理演讲全文如下：</p>
 <p>国际战略研究所所长约翰.奇普曼博士阁下</p>
@@ -797,7 +497,7 @@
 <p>世界正处于一个转折点。全球化受到多方的抨击,美国和中国的关系日益紧张。新加坡和许多其他国家一样,非常担心这样的趋势。我们既不知道形势会如何发展,也不晓得世界各国是否能够携手开辟新的出路,一同维护世界和平与繁荣。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2019/06/02/lixianlong/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -809,57 +509,24 @@
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope="" itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2019/01/13/guangdong-journey/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -871,35 +538,19 @@
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/13/guangdong-journey/" class="post-title-link" itemprop="url">广东游记</a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2019/01/13/guangdong-journey/" class="post-title-link" itemprop="url">广东游记</a>
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -908,8 +559,6 @@
               <time title="创建时间：2019-01-13 19:56:51" itemprop="dateCreated datePublished" datetime="2019-01-13T19:56:51+08:00">2019-01-13</time>
             </span>
           
-
-          
             
 
             
@@ -917,22 +566,16 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
               </span>
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/游记/" itemprop="url" rel="index"><span itemprop="name">游记</span></a></span>
 
@@ -943,27 +586,9 @@
           
 
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -971,16 +596,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <p>趁着早早考完试后难得的间隙，买了票直奔深圳，然后去广州，开始了回家前的避寒之旅。说是广东游记，其实只是简单去了深圳和广州，很惭愧。</p>
 <p>总的来讲深圳给人的印象是中国难得的各方面都很现代化的大都市，无论是硬件设施还是城市文化，都是现代社会应有的样子。可能由于深圳本身历史还短，一切都是那么年轻的感觉，尤其是看到一句宣传语“来了都是深圳人”，虽然是在忽悠人，但仍给人一种和北上广不一样的错觉。不过对于旅游而言，深圳着实不算一个合格的目的地，毕竟这么一座人人上班又没有什么历史积淀的城市，很难找到值得去游玩的地方。后悔没有早办好通行证，错过了澳门的 IFS。</p>
 <p>至于广州，能在不经意间感受那种厚重的历史感，又能感受到因为开放发展带来的现代化，两者交融的感觉复杂又迷人。至于美食，不用多说，每天不停的话也足够吃上几十天。不过作为一线城市，广州的消费和房价也是最一线的，我终归还是一个过客。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2019/01/13/guangdong-journey/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -992,57 +613,24 @@
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope="" itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2018/12/31/summary-2018/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1054,35 +642,19 @@
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/31/summary-2018/" class="post-title-link" itemprop="url">2018回望</a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/12/31/summary-2018/" class="post-title-link" itemprop="url">2018回望</a>
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1091,8 +663,6 @@
               <time title="创建时间：2018-12-31 23:15:51" itemprop="dateCreated datePublished" datetime="2018-12-31T23:15:51+08:00">2018-12-31</time>
             </span>
           
-
-          
             
 
             
@@ -1100,22 +670,16 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
               </span>
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
@@ -1126,27 +690,9 @@
           
 
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -1154,14 +700,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <p>又是一年结束，如果说要给今年找一个什么关键词的话，我觉得是再见，今年我们真的告别了太多人，太多事。当然，也有一些想说再见的东西还在，希望能早日说声告别。似乎是为了烘托一下今年的气氛，昨天下了场挺大的雪，气温也降了下来，有新年的感觉了。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/12/31/summary-2018/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -1173,57 +715,24 @@
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope="" itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2018/12/20/final-homework/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1235,35 +744,19 @@
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/20/final-homework/" class="post-title-link" itemprop="url">计算物理期末论文</a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/12/20/final-homework/" class="post-title-link" itemprop="url">计算物理期末论文</a>
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1272,8 +765,6 @@
               <time title="创建时间：2018-12-20 16:03:51" itemprop="dateCreated datePublished" datetime="2018-12-20T16:03:51+08:00">2018-12-20</time>
             </span>
           
-
-          
             
 
             
@@ -1281,22 +772,16 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
               </span>
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/计算物理/" itemprop="url" rel="index"><span itemprop="name">计算物理</span></a></span>
 
@@ -1307,27 +792,9 @@
           
 
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -1335,15 +802,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <h2 id="一、摘要"><a href="#一、摘要" class="headerlink" title="一、摘要"></a>一、摘要</h2><p>本文使用二维伊辛模型进行蒙特卡洛模拟，观察了不同温度下系统平均磁矩随时间的演化关系，并且观察到了温度变化时产生的二级相变现象，证明使用如此简单的模型也可以模拟部分物理学现象。</p>
 <p>之后以伊辛模型为基础，简要实现了一种神经网络，即 Hopefield Neural Network(HNN),可以根据给定的训练集来生成关系矩阵，并可以用来还原加入噪声的信号。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/12/20/final-homework/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -1355,57 +818,24 @@
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope="" itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2018/12/09/homework10/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1417,35 +847,19 @@
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/09/homework10/" class="post-title-link" itemprop="url">计算物理第十次作业</a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/12/09/homework10/" class="post-title-link" itemprop="url">计算物理第十次作业</a>
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1454,8 +868,6 @@
               <time title="创建时间：2018-12-09 18:44:10" itemprop="dateCreated datePublished" datetime="2018-12-09T18:44:10+08:00">2018-12-09</time>
             </span>
           
-
-          
             
 
             
@@ -1463,22 +875,16 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
               </span>
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/计算物理/" itemprop="url" rel="index"><span itemprop="name">计算物理</span></a></span>
 
@@ -1489,27 +895,9 @@
           
 
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -1517,16 +905,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <h2 id="7-6"><a href="#7-6" class="headerlink" title="7.6"></a>7.6</h2><blockquote>
 <p>Simulate SAWs in three dimensions. Determine the vairation of $\langle r^2\rangle$ with step number and find the value of $\nu$, where this parameter is defined through the relation (7.9). Compare your results with those in Figure 7.6. You should find that $\nu$ decreases for successively higher dimensions. (It is 1 in one dimension and 3/4 in two dimensions.) Can you explain this trend qualitatively?</p>
 </blockquote>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/12/09/homework10/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -1538,57 +922,24 @@
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope="" itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2018/12/04/homework9/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1600,35 +951,19 @@
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/04/homework9/" class="post-title-link" itemprop="url">计算物理第九次作业</a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/12/04/homework9/" class="post-title-link" itemprop="url">计算物理第九次作业</a>
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1637,8 +972,6 @@
               <time title="创建时间：2018-12-04 21:18:25" itemprop="dateCreated datePublished" datetime="2018-12-04T21:18:25+08:00">2018-12-04</time>
             </span>
           
-
-          
             
 
             
@@ -1646,22 +979,16 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
               </span>
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/计算物理/" itemprop="url" rel="index"><span itemprop="name">计算物理</span></a></span>
 
@@ -1672,27 +999,9 @@
           
 
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -1700,16 +1009,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <h2 id="5-13"><a href="#5-13" class="headerlink" title="5.13"></a>5.13</h2><blockquote>
 <p>Calculate the value of $\pi$ by using numerical integration to estimate the area of a circle of unit radius. Observe how your estimate approaches the exact value (3.1415926…) as the grid size in the integration is reduced.</p>
 </blockquote>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/12/04/homework9/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -1721,57 +1026,24 @@
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope="" itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2018/12/04/google-dragonfly/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1783,35 +1055,19 @@
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/04/google-dragonfly/" class="post-title-link" itemprop="url">同样作为中国大陆人，我为什么坚决反对「蜻蜓」项目</a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/12/04/google-dragonfly/" class="post-title-link" itemprop="url">同样作为中国大陆人，我为什么坚决反对「蜻蜓」项目</a>
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1820,8 +1076,6 @@
               <time title="创建时间：2018-12-04 12:42:33" itemprop="dateCreated datePublished" datetime="2018-12-04T12:42:33+08:00">2018-12-04</time>
             </span>
           
-
-          
             
 
             
@@ -1829,22 +1083,16 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-04 02:48:34" itemprop="dateModified" datetime="2019-06-04T02:48:34+08:00">2019-06-04</time>
               </span>
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/转载/" itemprop="url" rel="index"><span itemprop="name">转载</span></a></span>
 
@@ -1855,27 +1103,9 @@
           
 
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -1883,10 +1113,6 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <blockquote>
 <p>转载自<a href="https://github.com/CT-ABT/Also-as-a-mainland-Chinese-why-do-I-resolutely-oppose-Google-s-dragonfly-project/blob/master/README.md" target="_blank" rel="noopener">Github</a><br>作者 CT-ABT</p>
 </blockquote>
@@ -1895,7 +1121,7 @@
 <p>Google 「退出」中国到底是怎么一回事，以及：Google 是否应对 551,615,600 名无法使用 Google 服务者负责</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/12/04/google-dragonfly/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -1907,57 +1133,24 @@
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope="" itemtype="http://schema.org/Article">
   
   
   
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2018/12/02/ingress-banners/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1969,35 +1162,19 @@
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/02/ingress-banners/" class="post-title-link" itemprop="url">Ingress 拼图及其他</a>
-              
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/12/02/ingress-banners/" class="post-title-link" itemprop="url">Ingress 拼图及其他</a>
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -2006,8 +1183,6 @@
               <time title="创建时间：2018-12-02 01:15:09" itemprop="dateCreated datePublished" datetime="2018-12-02T01:15:09+08:00">2018-12-02</time>
             </span>
           
-
-          
             
 
             
@@ -2015,22 +1190,16 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-07-25 13:00:44" itemprop="dateModified" datetime="2019-07-25T13:00:44+08:00">2019-07-25</time>
               </span>
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Ingress/" itemprop="url" rel="index"><span itemprop="name">Ingress</span></a></span>
 
@@ -2041,27 +1210,9 @@
           
 
           
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
@@ -2069,10 +1220,6 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <p>不知不觉又到了年底了，是一个适合写年终总结的日子。由于天气渐冷，逐渐咸鱼（本来就是），估计也不会做什么新的拼图了，就总结一下入坑两年多以来做过的哪些拼图吧，以此纪念一下自己的 <a href="https://www.ingress.com" target="_blank" rel="noopener">Ingress</a> 岁月。  </p>
 <p>首先还是想要感谢这个游戏，没有你的话我估计不可能走过这么多路，认识这么多人，发现每一座城市不一样的那些风景。虽然这个垃圾游戏越搞越凉，但还是不会弃坑的吧。</p>
 <p>然后要感谢这几年认识的这些大佬们，虽然我很菜，但是大佬们这么强，<del>似乎也能得到一点奇怪的安慰</del> 我还是很菜。写了很多 ID，还是不放出来了吧。</p>
@@ -2080,7 +1227,7 @@
 <p><strong>拼图名字不保证完全正确，仅供参考</strong></p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/12/02/ingress-banners/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -2092,43 +1239,20 @@
     </div>
 
     
-
-    
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-  </section>
+  </div>
 
   
   <nav class="pagination">
@@ -2136,12 +1260,10 @@
   </nav>
 
 
-
           </div>
           
 
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -2152,27 +1274,30 @@
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-      
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-  
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
-  
   <p class="site-author-name" itemprop="name">Editing</p>
-  <div class="site-description motion-element" itemprop="description">Freedom is Not Free</div>
+  <div class="site-description" itemprop="description">Freedom is Not Free</div>
 </div>
-
-
   <nav class="site-state motion-element">
-    
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
@@ -2182,8 +1307,6 @@
         </a>
       </div>
     
-
-    
       
       
       <div class="site-state-item site-state-categories">
@@ -2192,28 +1315,10 @@
             <a href="/categories/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
-    
-
     
       
       
@@ -2221,40 +1326,6 @@
         
           
             <a href="/tags/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
           
         
         <span class="site-state-item-count">16</span>
@@ -2265,23 +1336,12 @@
   </nav>
 
 
-
-
-
-
-
-
-
-
-
-
-  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+  <div class="links-of-blogroll motion-element">
     <div class="links-of-blogroll-title">
-      <i class="fa  fa-fw fa-link"></i>
+      <i class="fa fa-fw fa-link"></i>
       Links
     </div>
     <ul class="links-of-blogroll-list">
-      
         <li class="links-of-blogroll-item">
           <a href="http://changeless.me" title="http://changeless.me" rel="noopener" target="_blank">千江有水</a>
         </li>
@@ -2297,22 +1357,13 @@
     </ul>
   </div>
 
-
-          
-          
-        </div>
       </div>
-
-      
-
-      
 
     </div>
   </aside>
   <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
@@ -2323,27 +1374,16 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Editing</span>
-
-  
-
-  
 </div>
-
-
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
-
-
-
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
 
         
+
+
+
+
 
 
 
@@ -2355,99 +1395,46 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-
   </div>
 
   
 
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-
-  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-
-
-  <script src="/js/utils.js?v=7.2.0"></script>
-
-  <script src="/js/motion.js?v=7.2.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/affix.js?v=7.2.0"></script>
-
-  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
   
 
-  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
-  
-
-  
-
-
-  
-  
-
-  
   
     
       
@@ -2473,11 +1460,9 @@
       
     
   
-
-  
     
-      <script type="text/x-mathjax-config">
-  
+      
+<script type="text/x-mathjax-config">
 
   MathJax.Hub.Config({
     tex2jax: {
@@ -2486,7 +1471,6 @@
       skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
     },
     TeX: {
-      
       equationNumbers: {
         autoNumber: 'AMS'
       }
@@ -2518,60 +1502,16 @@
     }
   });
 </script>
-<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
 
     
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
-
-window.addEventListener("message", function(e) {
-  var data = e.data;
-  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
-    var featureID = data.split(':')[1];
-    var height = data.split(':')[2];
-    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
-  }
-}, false);
-</script>
-
-
-
-
-
-
-
+  
 
   
 
