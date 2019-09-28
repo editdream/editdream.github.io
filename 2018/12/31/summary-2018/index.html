@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 3.9.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.4.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.4.0">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.4.0">
@@ -213,20 +213,20 @@
             
 
   <div id="posts" class="posts-expand">
-      <article itemscope="" itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2018/12/31/summary-2018/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Editing">
       <meta itemprop="description" content="Freedom is Not Free">
       <meta itemprop="image" content="/images/avatar.webp">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
       <header class="post-header">
@@ -267,7 +267,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
 
                 
                 
@@ -288,6 +288,7 @@
       
         <p>又是一年结束，如果说要给今年找一个什么关键词的话，我觉得是再见，今年我们真的告别了太多人，太多事。当然，也有一些想说再见的东西还在，希望能早日说声告别。似乎是为了烘托一下今年的气氛，昨天下了场挺大的雪，气温也降了下来，有新年的感觉了。</p>
 <a id="more"></a>
+
 <p>晚上刚考完量力，果然还是太菜，回来看逼哥的直播，垃圾网易云又看不了，心情更差了。不过还是写写总结吧，总不能一年过去啥都没留下。</p>
 <p>这一年没怎么出门，但还是有不少值得记录的事情。回看一下二月春节时写的一段话，感觉还是低估了这个世界。</p>
 <blockquote>
@@ -427,12 +428,15 @@
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.webp"
+      alt="Editing">
   <p class="site-author-name" itemprop="name">Editing</p>
   <div class="site-description" itemprop="description">Freedom is Not Free</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
@@ -469,6 +473,7 @@
       </div>
     
   </nav>
+</div>
 
 
   <div class="links-of-blogroll motion-element">
@@ -510,7 +515,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Editing</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
 
@@ -533,8 +538,6 @@
   </div>
 
   
-
-
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>

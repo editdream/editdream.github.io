@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 3.9.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.4.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.4.0">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.4.0">
@@ -213,20 +213,20 @@
             
 
   <div id="posts" class="posts-expand">
-      <article itemscope="" itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2019/06/06/travis/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Editing">
       <meta itemprop="description" content="Freedom is Not Free">
       <meta itemprop="image" content="/images/avatar.webp">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
       <header class="post-header">
@@ -259,7 +259,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -280,24 +280,31 @@
       
         <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>之前在 vps 搭建了简单的 hexo 工作环境，配合 git 发布插件可以一键发布网页。之后使用 git 在电脑和 vps 之间同步了源码，可以在本地方便的编辑后 push 到 GitHub，之后在 vps 生成发布。最近发现了 Travis 自动集成工具，可以方便的读取 GitHub repo 进行自动集成，只需要绑定后简单配置 <code>.travis.yml</code> 即可。下面简单介绍配置过程和遇到的问题。</p>
 <a id="more"></a>
+
 <h1 id="注册-Travis"><a href="#注册-Travis" class="headerlink" title="注册 Travis"></a>注册 Travis</h1><p>使用 GitHub 账号在<a href="https://travis-ci.com/" target="_blank" rel="noopener">官网</a>进行绑定，选择上传源码的 repo 绑定即可。</p>
 <h1 id="安装-Travis-CML"><a href="#安装-Travis-CML" class="headerlink" title="安装 Travis CML"></a>安装 Travis CML</h1><p>如果不需要使用 Travis 进行文件加密来保护密钥等内容，可以略过这一步。在这里由于要进行发布操作，必须 ssh 私钥，因此使用 Travis 对私钥文件进行加密，保护安全。如果你对 GitHub 足够放心，可以创建私有仓库并直接上传私钥，省略该步骤。不过十分不建议这样做。</p>
 <p>首先确保 vps 装有 ruby，然后安装 Travis CML，按提示登录 GitHub 账号即可。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> gem install travis</span><br><span class="line"><span class="meta">$</span> travis login</span><br></pre></td></tr></table></figure>
+
 <h1 id="编辑-travis-配置"><a href="#编辑-travis-配置" class="headerlink" title="编辑 travis 配置"></a>编辑 travis 配置</h1><p>下面直接给出我的配置文件，参考自<a href="https://kchen.cc/2016/11/12/hexo-instructions/#Travis-CI-%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90" target="_blank" rel="noopener">基于 Hexo 的全自动博客构建部署系统</a></p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span> <span class="string">stable</span></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line"><span class="attr">  only:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">master</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line"><span class="attr">  directories:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">node_modules</span></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line"><span class="comment"># 配置ssh</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">mv</span> <span class="string">id_ed25519</span> <span class="string">~/.ssh/</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_ed25519</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">eval</span> <span class="string">$(ssh-agent)</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">ssh-add</span> <span class="string">~/.ssh/id_ed25519</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">cp</span> <span class="string">ssh_config</span> <span class="string">~/.ssh/config</span></span><br><span class="line"><span class="comment"># 安装hexo</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span> <span class="bullet">-g</span> <span class="string">hexo-cli</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-deployer-git</span> <span class="bullet">--save</span></span><br><span class="line"><span class="comment"># 下载主题和插件</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">git</span> <span class="string">clone</span> <span class="attr">https://github.com/theme-next/hexo-theme-next</span> <span class="string">themes/next</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">git</span> <span class="string">clone</span> <span class="attr">https://github.com/theme-next/theme-next-fancybox3</span> <span class="string">themes/next/source/lib/fancybox</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">git</span> <span class="string">clone</span> <span class="attr">https://github.com/theme-next/theme-next-jquery-lazyload</span> <span class="string">themes/next/source/lib/jquery_lazyload</span></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">hexo</span> <span class="string">generate</span></span><br><span class="line"><span class="attr">after_success:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">hexo</span> <span class="string">deploy</span></span><br></pre></td></tr></table></figure>
+
 <p>每项配置的具体说明可以参考上面的文章，有十分详细的介绍。这里只说一下我遇到的小问题。</p>
 <h2 id="主题和插件"><a href="#主题和插件" class="headerlink" title="主题和插件"></a>主题和插件</h2><p>由于本网站使用了 next 主题，而且同步到 GitHub 的源码中不包含主题部分，因此需要同时下载该主题文件和开启的插件。需要注意的是路径要确保正确，否则生成的网页会无法加载所需的 js 脚本。</p>
 <h2 id="加密私钥"><a href="#加密私钥" class="headerlink" title="加密私钥"></a>加密私钥</h2><p>我使用的是 ed25519 算法生成的私钥，默认位于 <code>~/.ssh/id_ed25519</code>，下面以此为例，可以根据自己的具体配置进行调整。</p>
 <p><strong>请确保当前所在目录名称和repo名称相同，否则 Travis 无法上传加密后的环境变量。</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cp ~/.ssh/id_ed25519 .</span><br><span class="line"><span class="meta">$</span> travis encrypt-file id_25519 --add</span><br><span class="line"><span class="meta">$</span> rm id_ed25519</span><br></pre></td></tr></table></figure>
+
 <p>运行后会自动在 <code>.travis.yml</code> 添加以下内容</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="string">openssl</span> <span class="string">aes-256-cbc</span> <span class="bullet">-K</span> <span class="string">$encrypted_**********_key</span> <span class="bullet">-iv</span> <span class="string">$encrypted_**********_iv</span> <span class="bullet">-in</span> <span class="string">id_ed25519</span> <span class="bullet">-out</span> <span class="string">id_ed25519</span> <span class="bullet">-d</span></span><br></pre></td></tr></table></figure>
+
 <p>对应的环境变量会自动上传到 Travis，可以在设置中进行查看。在集成时 Travis 会对加密文件进行解密，生成需要的私钥文件。</p>
 <p>之后编辑一份 ssh 配置文件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  User git</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  IdentityFile ~/.ssh/id_ed25519</span><br><span class="line">  IdentitiesOnly yes</span><br></pre></td></tr></table></figure>
+
 <p>至此全部配置结束，检查工作目录是否包含下面所有文件，特别是标记星号的文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml*</span><br><span class="line">├── db.json*</span><br><span class="line">├── id_rsa.enc</span><br><span class="line">├── node_modules</span><br><span class="line">├── package.json*</span><br><span class="line">├── scaffolds*</span><br><span class="line">├── source*</span><br><span class="line">│   ├── CNAME</span><br><span class="line">│   ├── _posts</span><br><span class="line">│   ├── categories</span><br><span class="line">│   ├── img</span><br><span class="line">│   └── tags</span><br><span class="line">└── ssh_config*</span><br></pre></td></tr></table></figure>
+
 <p>然后就可以开心地上传到 GitHub 享受持续集成的快感了。可以去官网查看实时的 log 输出，排查问题。祝一次成功！</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><p><a href="https://kchen.cc/2016/11/12/hexo-instructions/#%E9%85%8D%E7%BD%AE-Travis-1" target="_blank" rel="noopener">基于 Hexo 的全自动博客构建部署系统</a></p>
@@ -413,12 +420,15 @@
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.webp"
+      alt="Editing">
   <p class="site-author-name" itemprop="name">Editing</p>
   <div class="site-description" itemprop="description">Freedom is Not Free</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
@@ -455,6 +465,7 @@
       </div>
     
   </nav>
+</div>
 
 
   <div class="links-of-blogroll motion-element">
@@ -496,7 +507,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Editing</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
 
@@ -519,8 +530,6 @@
   </div>
 
   
-
-
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>

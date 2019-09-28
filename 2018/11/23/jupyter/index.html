@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
+<meta name="generator" content="Hexo 3.9.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch.png?v=7.4.0">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.4.0">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.4.0">
@@ -213,20 +213,20 @@
             
 
   <div id="posts" class="posts-expand">
-      <article itemscope="" itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="https://editing.world/2018/11/23/jupyter/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Editing">
       <meta itemprop="description" content="Freedom is Not Free">
       <meta itemprop="image" content="/images/avatar.webp">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Editing's Dream">
     </span>
       <header class="post-header">
@@ -267,7 +267,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -288,28 +288,43 @@
       
         <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>基于 nginx ，在服务器同时搭建了 hexo 和 jupyter，可以使用 jupyter 直接在线编辑 md 并发布，同时能够直接看到 hexo 博客的效果。<br>服务器使用的是 GCP 提供的免费试用服务，域名是 freedom 免费域名，使用 Cloudflare 的 DNS 和 CDN 服务，开启 https 加密。<br>其实就是全部免费啦，可以根据自己的情况换用不同的服务</p>
 <a id="more"></a>
+
 <h1 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h1><h2 id="安装-Anaconda"><a href="#安装-Anaconda" class="headerlink" title="安装 Anaconda"></a>安装 Anaconda</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh</span><br><span class="line">$ bash Anaconda3-5.3.1-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
 <h2 id="安装-Node-js-和-git"><a href="#安装-Node-js-和-git" class="headerlink" title="安装 Node.js 和 git"></a>安装 Node.js 和 git</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-core</span><br><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/v0.33.11/install.sh | sh</span><br><span class="line">$ nvm install stable</span><br></pre></td></tr></table></figure>
+
 <h2 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<h1 id="hexo-配置"><a href="#hexo-配置" class="headerlink" title="hexo 配置"></a>hexo 配置</h1><p>首先执行下面命令建站<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo int hexo</span><br><span class="line">$ cd hexo</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
+
+<h1 id="hexo-配置"><a href="#hexo-配置" class="headerlink" title="hexo 配置"></a>hexo 配置</h1><p>首先执行下面命令建站</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo int hexo</span><br><span class="line">$ cd hexo</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
 <p>然后生成静态文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+
 <p>这里介绍了最简单的配置，其他详细信息请到 hexo 官网查看</p>
 <h1 id="配置-jupyter-notebook"><a href="#配置-jupyter-notebook" class="headerlink" title="配置 jupyter notebook"></a>配置 jupyter notebook</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
+
 <p>生成配置文件，位置为 ~/.jupyter/jupyter_notebook_config.py</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ jupyter notebook password</span><br></pre></td></tr></table></figure>
+
 <p>设置密码，文件位于 ~/.jupyter/jupyter_notebook_config.json</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"NotebookApp"</span>: &#123;</span><br><span class="line">    <span class="attr">"password"</span>: <span class="string">"sha1:123456789:0987654321abcdefghijklmno"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>将 psaaword 部分复制到配置文件中，可以参考</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#c.NotebookApp.base_url = '/jupyter'</span></span><br><span class="line">c.NotebookApp.password = <span class="string">'sha1:123456789:0987654321abcdefghijklmno'</span></span><br><span class="line">c.NotebookApp.ip = <span class="string">'localhost'</span></span><br><span class="line">c.NotebookApp.port = <span class="number">6789</span></span><br><span class="line">c.NotebookApp.port_retries = <span class="number">50</span></span><br><span class="line">c.NotebookApp.allow_origin = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.contents_manager_class = <span class="string">'notedown.NotedownContentsManager'</span></span><br><span class="line">c.NotebookApp.open_browser = <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#c.NotebookApp.base_url = '/jupyter'</span></span><br><span class="line">c.NotebookApp.password = <span class="string">'sha1:123456789:0987654321abcdefghijklmno'</span></span><br><span class="line">c.NotebookApp.ip = <span class="string">'localhost'</span></span><br><span class="line">c.NotebookApp.port = <span class="number">6789</span></span><br><span class="line">c.NotebookApp.port_retries = <span class="number">50</span></span><br><span class="line">c.NotebookApp.allow_origin = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.contents_manager_class = <span class="string">'notedown.NotedownContentsManager'</span></span><br><span class="line">c.NotebookApp.open_browser = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
 <p>然后使用 nohup 后台运行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nohup jupyter notebook &amp;</span><br></pre></td></tr></table></figure>
+
 <h1 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h1><p>首先安装 nginx</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
+
 <p>然后编辑 nginx 配置文件，默认位于 <code>/etc/nginx/site-enabled/default</code>，可以参考下面配置，SSL 证书可以直接下载 Cloudflare 提供的免费证书，或者使用 Let’s encrypt 等申请。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 80 jupyter;</span><br><span class="line">  listen [::]:80 jupyter;</span><br><span class="line">  listen 443 ssl jupyter;</span><br><span class="line">  listen [::]:443 ssl jupyter;</span><br><span class="line">  ssl on;</span><br><span class="line">  ssl_certificate /etc/ssl/private/private.pem;</span><br><span class="line">  ssl_certificate_key /etc/ssl//private/private.key;</span><br><span class="line"></span><br><span class="line">  access_log     /var/log/nginx/jupyter.access.log;</span><br><span class="line">  error_log      /var/log/nginx/jupyter.error.log;</span><br><span class="line"></span><br><span class="line">  root /var/www/root;</span><br><span class="line">  server_name jupyter.domain.example;</span><br><span class="line">  index index.html index.htm index.nginx-debian.html;</span><br><span class="line"></span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://127.0.0.1:6789;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line">    proxy_buffering off;</span><br><span class="line">    proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">    proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">    proxy_read_timeout 86400;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80 hexo;</span><br><span class="line">  listen [::]:80 hexo;</span><br><span class="line">  listen 443 ssl hexo;</span><br><span class="line">  listen [::]:443 ssl hexo;</span><br><span class="line">  ssl on;</span><br><span class="line">  ssl_certificate /etc/ssl/private/private.pem;</span><br><span class="line">  ssl_certificate_key /etc/ssl//private/private.key;</span><br><span class="line"></span><br><span class="line">  access_log     /var/log/nginx/hexo.access.log;</span><br><span class="line">  error_log      /var/log/nginx/hexo.error.log;</span><br><span class="line"></span><br><span class="line">  root ~/hexo/public;</span><br><span class="line">  server_name jupyter.domain.example;</span><br><span class="line">  index index.html index.htm index.nginx-debian.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然后重新加载 nginx</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service nginx restart</span><br></pre></td></tr></table></figure>
+
 <p>到此应该就可以正常访问 jupyter 和 hexo 了，之后可以使用 jupyter notebook 编辑文章，使用自带的 terminal 进行生成静态网页。也可以参考官方将网页发布到 github 并绑定自己域名访问。</p>
 
     </div>
@@ -423,12 +438,15 @@
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="/images/avatar.webp" alt="Editing">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.webp"
+      alt="Editing">
   <p class="site-author-name" itemprop="name">Editing</p>
   <div class="site-description" itemprop="description">Freedom is Not Free</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
@@ -465,6 +483,7 @@
       </div>
     
   </nav>
+</div>
 
 
   <div class="links-of-blogroll motion-element">
@@ -506,7 +525,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Editing</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
 
@@ -529,8 +548,6 @@
   </div>
 
   
-
-
   <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
